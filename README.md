@@ -26,5 +26,13 @@ Today I started a classic Coursera course [Machine Learning by Andrew Ng](https:
    ![Housing price](images/Diagram_lecture_2.png)
    
    * Hypothesis: h<sub>&theta;</sub>(x) = &theta;<sub>0</sub> x + &theta;<sub>1</sub>x
-   * Cost function J(&theta;<sub>0</sub>, &theta;<sub>1</sub>)
+   * Cost function: J(&theta;<sub>0</sub>, &theta;<sub>1</sub>)
+   * Gradient descent
+      * Start with some &theta;<sub>0</sub>, &theta;<sub>1</sub>
+      * Keep changing (simutaneously) &theta;<sub>0</sub>, &theta;<sub>1</sub> to reduce J(&theta;<sub>0</sub>, &theta;<sub>1</sub>) until hopefully end up at minimum
+      * Learning rate &alpha;
+          1. Too small -> slow
+          2. Too large -> fail to converge or diverge
+          3. As approaching a local minimum, gradient denscent will automatically take smaller steps -> no need to reduce &alpha; over time
+      * May reach a local minimum
   
