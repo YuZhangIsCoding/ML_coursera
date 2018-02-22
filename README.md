@@ -12,3 +12,12 @@ Today I started a classic Coursera course [Machine Learning by Andrew Ng](https:
       * Supervised learning
       * Unsupervised learning
       * Others: reinforcement learning, recommender systems
+   * Supervised learning:
+      * Regression: predict continuous values, in other words, mapping input to some continuous function.
+      * Classification: discrete values
+   * Unsupervised learning:
+      * No given answer, as as google news clustering and clustering people using genes
+      * Could approach problems with little or no idea what the result should look like
+      * Could not know the effects of variables
+      * No feedback on the prediction results
+2. Linear Regression with One Variable
