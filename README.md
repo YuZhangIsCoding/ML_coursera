@@ -22,5 +22,7 @@ Today I started a classic Coursera course [Machine Learning by Andrew Ng](https:
       * No feedback on the prediction results
 2. Linear Regression with One Variable
    * Housing price
-   ![GitHub Logo](images/Diagram_lecture_2.png)
+   
+   ![Housing price](images/Diagram_lecture_2.png)
+      * Hypothesis h(x) = t0+t1*x
   
