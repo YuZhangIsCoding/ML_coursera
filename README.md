@@ -26,5 +26,5 @@ Today I started a classic Coursera course [Machine Learning by Andrew Ng](https:
    ![Housing price](images/Diagram_lecture_2.png)
    
    * Hypothesis: h<sub>&theta;</sub>(x) = &theta;<sub>0</sub> x + &theta;<sub>1</sub>x
-   * Cost function J(&theta;<sub>0</sub>, &theta;<sub>1</sub>) = \frac{1}{2m}
+   * Cost function J(&theta;<sub>0</sub>, &theta;<sub>1</sub>)
   
