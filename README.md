@@ -21,3 +21,6 @@ Today I started a classic Coursera course [Machine Learning by Andrew Ng](https:
       * Could not know the effects of variables
       * No feedback on the prediction results
 2. Linear Regression with One Variable
+   * Housing price
+   ![GitHub Logo](images/Diagram_lecture_2.png)
+  
