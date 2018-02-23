@@ -50,5 +50,41 @@ Today I started a classic Coursera course [Machine Learning by Andrew Ng](https:
       
 ## Week 2
 1. Linear Regression with Multiple Variables
+    * Often times we have multiple features (variables)
+h<sub>&theta;</sub>(x) = &theta;<sub>0</sub>+&theta;<sub>1</sub>x<sub>1</sub>+&theta;<sub>2</sub>x<sub>2</sub>+...
+    * For convinience, define x<sub>0</sub> = 1
+    * The problem can be expressed as: h<sub>&theta;</sub>(x) = &theta;<sup>T</sup>&sdot;x
 
-  
+1. Gradient Descent for Multivariate Linear Regression
+    * Algorithm:
+Repeat{
+&theta;<sub>j</sub> := &theta;<sub>j</sub>-&alpha;&part;/&part;&theta;<sub>j</sub>(J(&theta;))
+Simutaneously update for j = 0, 1, ..., n
+    * Feature Scaling: make sure that features are on a similar scale
+        * Andrew's personal judgement -3 ~ 3 and -&#8531; ~ &#8531; are appropriate
+    * Mean normalization:
+        * x<sub>i</sub> &larr; (x<sub>i</sub>-&mu;)/s, where s stands for range or standard deviation
+    * Learning rate
+        * Use plots to "debug", making sure that gradient denscent is working properly.
+        * J(&theta;) should decrease after every iteration for sufficiently small &alpha;.
+        * A large learning rate &alpha; may cause cost function to go up or experience oscillations over iterations.
+        * Andrew's typical choice: 0.001, 0.003, 0.01, 0.03, ..., 0.3, 1, ...
+    * Features can be combined, e.g., combine frontage and depth to area.
+    * Polynomial regression:
+        * h<sub>&theta;</sub>(x) = &theta;<sub>0</sub>+&theta;<sub>1</sub>x+&theta;<sub>2</sub>x<sup>2</sup>+&theta;<sub>3</sub>x<sup>3</sup> can be represented as h<sub>&theta;</sub>(x) = &theta;<sub>0</sub>+&theta;<sub>1</sub>x<sub>1</sub>+&theta;<sub>2</sub>x<sub>2</sub>+&theta;<sub>3</sub>x<sub>3</sub>
+        * Feature scaling now is important
+        * The choice of features is also very important
+
+1. Normal Equation: computing parameters analytically
+    * &theta; = (X<sup>T</sup>X)<sup>-1</sup>X<sup>T</sup>y
+    * Feature scaling is not needed
+|Gradient Descent| Normal Equation|
+|--|--|
+|need to choose &alpha;|No need for &alpha;|
+|many iteractions|no need to iterate|
+|works well even n is large|slow if n is very large|
+|O(kn<sup>2</sup>|O(kn<sup>3</sup> for matrix operations|
+    * Noninvertibility (singular/degenerated)
+        * Reduandant features (linear dependant)
+        * Too many features (e.g. m &le; n)
+
