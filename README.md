@@ -31,8 +31,24 @@ Today I started a classic Coursera course [Machine Learning by Andrew Ng](https:
       * Start with some &theta;<sub>0</sub>, &theta;<sub>1</sub>
       * Keep changing (simutaneously) &theta;<sub>0</sub>, &theta;<sub>1</sub> to reduce J(&theta;<sub>0</sub>, &theta;<sub>1</sub>) until hopefully end up at minimum
       * Learning rate &alpha;
-          1. Too small -> slow
-          2. Too large -> fail to converge or diverge
-          3. As approaching a local minimum, gradient denscent will automatically take smaller steps -> no need to reduce &alpha; over time
+          1. Too small &rarr; slow
+          2. Too large &rarr; fail to converge or diverge
+          3. As approaching a local minimum, gradient denscent will automatically take smaller steps &rarr; no need to reduce &alpha; over time
       * May reach a local minimum
+      
+3. Linear Algebra
+   * Matrix, vector
+   * Matrix addition: same dimension, element-wise
+   * Scalar multiplication: multiply by real number
+   * Matrix-vector, matrix-matrix multiplication
+      * Often times solving Prediction = DataMatrix &sdot; Prameters is more computationally efficient
+      * Not commutative: A&sdot;B &ne; B&sdot;A
+      * Associative (A&sdot;B)&sdot;C = A&sdot;(B&sdot;C)
+      * Identity matrix: *I*&sdot;A = A&sdot;*I*
+      * Inverse: A&sdot;A<sup>-1</sup> = A<sup>-1</sup>&sdot;A = *I*
+   * Transpose: B = A<sup>T</sup>, then B<sub>ij</sub> = A<sub>ji</sub>
+      
+## Week 2
+1. Linear Regression with Multiple Variables
+
   
