@@ -57,11 +57,15 @@ h<sub>&theta;</sub>(x) = &theta;<sub>0</sub>+&theta;<sub>1</sub>x<sub>1</sub>+&t
 
 1. Gradient Descent for Multivariate Linear Regression
     * Algorithm:
-Repeat{
-&theta;<sub>j</sub> := &theta;<sub>j</sub>-&alpha;&part;/&part;&theta;<sub>j</sub>(J(&theta;))
-Simutaneously update for j = 0, 1, ..., n
+        Repeat{
+        
+        &theta;<sub>j</sub> := &theta;<sub>j</sub>-&alpha;<sup>&part;</sup>&frasl;<sub>&part;&theta;<sub>j</sub></sub>(J(&theta;))
+        
+        }
+        
+        Simutaneously update for j = 0, 1, ..., n
     * Feature Scaling: make sure that features are on a similar scale
-        * Andrew's personal judgement -3 ~ 3 and -&#8531; ~ &#8531; are appropriate
+        * Andrew's personal judgement: -3 ~ 3 and -&#8531; ~ &#8531; are appropriate
     * Mean normalization:
         * x<sub>i</sub> &larr; (x<sub>i</sub>-&mu;)/s, where s stands for range or standard deviation
     * Learning rate
@@ -78,13 +82,15 @@ Simutaneously update for j = 0, 1, ..., n
 1. Normal Equation: computing parameters analytically
     * &theta; = (X<sup>T</sup>X)<sup>-1</sup>X<sup>T</sup>y
     * Feature scaling is not needed
-|Gradient Descent| Normal Equation|
-|--|--|
-|need to choose &alpha;|No need for &alpha;|
-|many iteractions|no need to iterate|
-|works well even n is large|slow if n is very large|
-|O(kn<sup>2</sup>|O(kn<sup>3</sup> for matrix operations|
+    
+      |Gradient Descent| Normal Equation|
+      |--|--|
+      |need to choose &alpha;|No need for &alpha;|
+      |many iteractions|no need to iterate|
+      |works well even n is large|slow if n is very large|
+      |O(kn<sup>2</sup>)|O(kn<sup>3</sup>) for matrix operations|
+
     * Noninvertibility (singular/degenerated)
-        * Reduandant features (linear dependant)
+        * Reduandant features (linear dependent)
         * Too many features (e.g. m &le; n)
 
