@@ -26,7 +26,8 @@ Today I started a classic Coursera course [Machine Learning by Andrew Ng](https:
    ![Housing price](images/Diagram_lecture_2.png)
    
    * Hypothesis: h<sub>&theta;</sub>(x) = &theta;<sub>0</sub> x + &theta;<sub>1</sub>x
-   * Cost function: J(&theta;<sub>0</sub>, &theta;<sub>1</sub>)
+   * Cost function: J(&theta;<sub>0</sub>, &theta;<sub>1</sub>) = <sup>1</sup>&frasl;<sub>2m</sub>&sdot;&sum;(h<sub>&theta;</sub>(x<sup>(i)</sup>)-y<sup>(i)</sup>)<sup>2</sup>
+        * Squared error function or mean squared error, the mean is halved as a convinience for the computation of gradient descent
    * Gradient descent
       * Start with some &theta;<sub>0</sub>, &theta;<sub>1</sub>
       * Keep changing (simutaneously) &theta;<sub>0</sub>, &theta;<sub>1</sub> to reduce J(&theta;<sub>0</sub>, &theta;<sub>1</sub>) until hopefully end up at minimum
@@ -112,4 +113,5 @@ h<sub>&theta;</sub>(x) = &theta;<sub>0</sub>+&theta;<sub>1</sub>x<sub>1</sub>+&t
         * Then &delta; = <sup>1</sup>&frasl;<sub>m</sub>&sdot;X<sup>T</sup>&sdot;(X&sdot;&theta;-y)
         * When we reached the globle minimum, &delta;&rarr;0, so X<sup>T</sup>&sdot;(X&sdot;&theta;-y) = 0 &rArr; X<sup>T</sup>&sdot;X&sdot; = X<sup>T</sup>&sdot;y &rArr; &theta; = (X<sup>T</sup>X)<sup>-1</sup>X<sup>T</sup>y, which proves the analytical solution mentioned about
     * Wrap it all up, we can use this form for the matrix iterations: **&theta; = &theta;-<sup>&alpha;</sup>&frasl;<sub>m</sub>&sdot;X<sup>T</sup>&sdot;(X&sdot;&theta;-y)**
+    * The cost function can also be vectorized: **J(&theta;) = <sup>1</sup>&frasl;<sub>2m</sub>&sdot;(X&sdot;&theta;-y)<sup>T</sup>&sdot;(X&sdot;&theta;-y)**
 
