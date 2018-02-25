@@ -62,7 +62,7 @@
             Same idea, we will penalize the case h<sub>&theta;</sub>(x) &rarr; 1 when y = 0
     * Simplified cost function and gradient descent
         * **Cost(h<sub>&theta;</sub>(x), y) = -ylog(h<sub>&theta;</sub>(x))-(1-y)log(1-h<sub>&theta;</sub>(x))**
-        * **J(&theta;) = -<sup>1</sup>&frasl;m[&sum;(ylog(h<sub>&theta;</sub>(x))+(1-y)log(1-h<sub>&theta;</sub>(x)))]
+        * **J(&theta;) = -<sup>1</sup>&frasl;m[&sum;(ylog(h<sub>&theta;</sub>(x))+(1-y)log(1-h<sub>&theta;</sub>(x)))]**
         * Can be derived from the principle of [maximum likelihood](https://en.wikipedia.org/wiki/Maximum_likelihood_estimation)
     * Algorithm:
     
