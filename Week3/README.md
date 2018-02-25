@@ -101,7 +101,7 @@
         * Medical diagram: not fill, cold, flu
     * one-vs-all
     
-        ![one-vs-all](images/BinaryClassVsMultiClass.png)
+        ![one-vs-all](https://github.com/YuZhangIsCoding/ML_coursera/tree/master/images/BinaryClassVsMultiClass.png)
         
         **h<sub>&theta;</sub><sup>(i)</sup>(x) = P(y=i|x;&theta;), (i = 1, 2, 3, ...)**
         * Train a logistic regression classifier h<sub>&theta;</sub><sup>(i)</sup>(x) for each class i to predict the probability that y = i
