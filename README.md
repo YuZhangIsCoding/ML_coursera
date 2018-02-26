@@ -28,7 +28,7 @@ h<sub>&theta;</sub>(x) = &theta;<sub>0</sub>+&theta;<sub>1</sub>x<sub>1</sub>+&t
     * The problem can be expressed as: h<sub>&theta;</sub>(x) = &theta;<sup>T</sup>&sdot;x
 
 1. Gradient Descent for Multivariate Linear Regression
-    * &theta;<sub>j</sub> := &theta;<sub>j</sub>-&alpha;<sup>&part;</sup>&frasl;<sub>&part;&theta;<sub>j</sub></sub>
+    * &theta;<sub>j</sub> := &theta;<sub>j</sub>-&alpha;<sup>&part;</sup>&frasl;<sub>&part;&theta;<sub>j</sub></sub>J(&theta;)
     * Feature Scaling: make sure that features are on a similar scale
     * Mean normalization: (x<sub>i</sub>-&mu;)/s
     * Learning rate: J(&theta;) should decrease after every iteration for sufficiently small &alpha;.
