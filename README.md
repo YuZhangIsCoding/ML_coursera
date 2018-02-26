@@ -30,7 +30,7 @@ h<sub>&theta;</sub>(x) = &theta;<sub>0</sub>+&theta;<sub>1</sub>x<sub>1</sub>+&t
 1. Gradient Descent for Multivariate Linear Regression
     * &theta;<sub>j</sub> := &theta;<sub>j</sub>-&alpha;<sup>&part;</sup>&frasl;<sub>&part;&theta;<sub>j</sub></sub>
     * Feature Scaling: make sure that features are on a similar scale
-    * Mean normalization:
+    * Mean normalization: (x<sub>i</sub>-&mu;)/s
     * Learning rate: J(&theta;) should decrease after every iteration for sufficiently small &alpha;.
     * Features can be combined, e.g., combine frontage and depth to area.
     * Polynomial regression
@@ -45,17 +45,14 @@ h<sub>&theta;</sub>(x) = &theta;<sub>0</sub>+&theta;<sub>1</sub>x<sub>1</sub>+&t
     * Wrap it all up, we can use this form for the matrix iterations: **&theta; = &theta;-<sup>&alpha;</sup>&frasl;<sub>m</sub>&sdot;X<sup>T</sup>&sdot;(X&sdot;&theta;-y)**
     * The cost function can also be vectorized: **J(&theta;) = <sup>1</sup>&frasl;<sub>2m</sub>&sdot;(X&sdot;&theta;-y)<sup>T</sup>&sdot;(X&sdot;&theta;-y)**
 
-## Week 3
+## [Week 3](https://github.com/YuZhangIsCoding/ML_coursera/blob/master/Week3/README.md)
 
 1. Classification and Representation
-    * Idea is to use threshold classifier output h<sub>&theta;</sub>(x) at 0.5:
-    * Logistic regression
-    * Hypothesis representation **h<sub>&theta;</sub>(x) = <sup>1</sup>&frasl;<sub>(1+e<sup>-&theta;<sup>T</sup>&sdot;x</sup>)</sub>**
-    * **h<sub>&theta;</sub>(x) = P(y=1|x;&theta;)**
+    * Logistic regression: idea is to use threshold classifier output h<sub>&theta;</sub>(x) at 0.5
+    * Hypothesis representation **h<sub>&theta;</sub>(x) = <sup>1</sup>&frasl;<sub>(1+e<sup>-&theta;<sup>T</sup>&sdot;x</sup>)</sub>**, and **h<sub>&theta;</sub>(x) = P(y=1|x;&theta;)**
     * Decision boundary - a property of hypothesis
-    * Logistic Regressioin Model
-    * Simplified cost function and gradient descent* **J(&theta;) = -<sup>1</sup>&frasl;m[&sum;(ylog(h<sub>&theta;</sub>(x))+(1-y)log(1-h<sub>&theta;</sub>(x)))]**
-    * &theta;<sub>j</sub> := &theta;<sub>j</sub>-&alpha;<sup>&part;</sup>&frasl;<sub>&part;&theta;<sub>j</sub></sub>(J(&theta;))
+    * Simplified cost function and gradient descent **J(&theta;) = -<sup>1</sup>&frasl;m[&sum;(ylog(h<sub>&theta;</sub>(x))+(1-y)log(1-h<sub>&theta;</sub>(x)))]**
+    * Iterations: &theta;<sub>j</sub> := &theta;<sub>j</sub>-&alpha;<sup>&part;</sup>&frasl;<sub>&part;&theta;<sub>j</sub></sub>(J(&theta;))
         
     * Vectorized implementation:
         
@@ -72,32 +69,26 @@ h<sub>&theta;</sub>(x) = &theta;<sub>0</sub>+&theta;<sub>1</sub>x<sub>1</sub>+&t
     
         ![one-vs-all](images/BinaryClassVsMultiClass.png)
         
-        **h<sub>&theta;</sub><sup>(i)</sup>(x) = P(y=i|x;&theta;), (i = 1, 2, 3, ...)**
-            
-        max h<sub>&theta;</sub><sup>(i)<sup>(x)
+        **h<sub>&theta;</sub><sup>(i)</sup>(x) = P(y=i|x;&theta;), (i = 1, 2, 3, ...)**, 
+        and **max h<sub>&theta;</sub><sup>(i)<sup>(x)**
 
 1. Rugularization
    * The problem of overfitting
       
       ![overfitting](images/Overfitting.png)
-      * If we have too many features, the learned hypothesis may fit the training set well, but fails to generalize to new examples.
-   * Addressing overfitting
-      1. Reduce number of features
-      2. Regularization
+      
+   * Addressing overfitting (Reduce number of features or Regularization)
+
    * Cost function:**J(&theta;) = <sup>1</sup>&frasl;<sub>2m</sub>&sdot;[&sum;(h<sub>&theta;</sub>(x<sup>(i)</sup>)-y<sup>(i)</sup>)<sup>2</sup>+&lambda;&sdot;&sum;&theta;<sub>j</sub><sup>2</sup>], *j = 1, 2, ..., n***
    * Regulalized linear regression
    
-      Repeat{
-      
       **&theta;<sub>0</sub> = &theta;<sub>0</sub>-<sup>&alpha;</sup>&frasl;<sub>m</sub>&sdot;&sum;(h<sub>&theta;</sub>(x)-y)&sdot;x<sub>0</sub>**
       
       **&theta;<sub>j</sub> = &theta;<sub>j</sub>-&alpha;&sdot;[<sup>1</sup>&frasl;<sub>m</sub>&sdot;&sum;(h<sub>&theta;</sub>(x)-y)&sdot;x<sub>0</sub>+<sup>&lambda;</sup>&frasl;<sub>m</sub>&sdot;&theta;<sub>j</sub>], *j = 1, 2, ..., n***
       
       }
-   * Normal equation
-      
+   * Normal equation:
       **&theta; = (X<sup>T</sup>&sdot;X+&lambda;[<sup>0</sup>1<sub>1</sub>])<sup>-1</sup>&sdot;X<sup>T</sup>&sdot;y**
             
-   * Regularized logistic regression
-            
+   * Regularized logistic regression:
       **J(&theta;) = -<sup>1</sup>&frasl;<sub>m</sub>&sdot;[&sum;(ylog(h<sub>&theta;</sub>(x))+(1-y)log(1-h<sub>&theta;</sub>(x)))]+<sup>&lambda;</sup>&frasl;<sub>2m</sub>&sdot;&sum;&theta;<sub>j</sub><sup>2</sup>, *j = 1, 2, ..., n***
