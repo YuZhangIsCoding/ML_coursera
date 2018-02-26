@@ -27,6 +27,7 @@
             and P(y=1|x;&theta;)+P(y=0|x;&theta;) = 1
 
         * Decision boundary - a property of hypothesis
+
             Since g(z) &ge; 0.5 when z &ge; 0
             
             h<sub>&theta;</sub>(x) &ge; 0.5 whenever &theta;<sup>T</sup>&sdot;x &ge; 0
