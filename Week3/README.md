@@ -108,3 +108,42 @@
         * On a new input x, to make a prediction, pick the class that maximizes
             
             max h<sub>&theta;</sub><sup>(i)<sup>(x)
+
+1. Rugularization
+   * The problem of overfitting
+      
+      ![overfitting](../images/Overfitting.png)
+      * If we have too many features, the learned hypothesis may fit the training set well, but fails to generalize to new examples.
+   * Addressing overfitting
+      1. Reduce number of features
+         * Manually select which features to keep
+         * Model selection algorithm
+      2. Regularization
+         * Keep all the features, but reduce magnitude/values of &theta;<sub>j</sub>
+         * Works well when we have a lot of features, and each contributes a bit to predicting y
+   * Cost function
+      
+      **J(&theta;) = <sup>1</sup>&frasl;<sub>2m</sub>&sdot;[&sum;(h<sub>&theta;</sub>(x<sup>(i)</sup>)-y<sup>(i)</sup>)<sup>2</sup>+&lambda;&sdot;&sum;&theta;<sub>j</sub><sup>2</sup>], *j = 1, 2, ..., n***
+      
+      * If &lambda; is set to extremely large value, will cause "underfitting"
+      * Else if &lambda; is too small, may "overfitting"
+   * Regulalized linear regression
+   
+      Repeat{
+      
+      **&theta;<sub>0</sub> = &theta;<sub>0</sub>-<sup>&alpha;</sup>&frasl;<sub>m</sub>&sdot;&sum;(h<sub>&theta;</sub>(x)-y)&sdot;x<sub>0</sub>**
+      
+      **&theta;<sub>j</sub> = &theta;<sub>j</sub>-&alpha;&sdot;[<sup>1</sup>&frasl;<sub>m</sub>&sdot;&sum;(h<sub>&theta;</sub>(x)-y)&sdot;x<sub>0</sub>+<sup>&lambda;</sup>&frasl;<sub>m</sub>&sdot;&theta;<sub>j</sub>], *j = 1, 2, ..., n***
+      
+      }
+   * Normal equation
+      
+      **&theta; = (X<sup>T</sup>&sdot;X+&lambda;[<sup>0</sup>1<sub>1</sub>])<sup>-1</sup>&sdot;X<sup>T</sup>&sdot;y**
+      
+      if &lambda; > 0, (X<sup>T</sup>&sdot;X+&lambda;[<sup>0</sup>1<sub>1</sub>]) will be invertible
+      
+   * Regularized logistic regression
+      
+      Same as before, but h<sub>&theta;</sub>(x) = <sup>1</sup>&frasl;<sub>(1+e<sup>-&theta;<sup>T</sup>&sdot;x</sup>)</sub>
+      
+      **J(&theta;) = -<sup>1</sup>&frasl;<sub>m</sub>&sdot;[&sum;(ylog(h<sub>&theta;</sub>(x))+(1-y)log(1-h<sub>&theta;</sub>(x)))]+<sup>&lambda;</sup>&frasl;<sub>2m</sub>&sdot;&sum;&theta;<sub>j</sub><sup>2</sup>, *j = 1, 2, ..., n***
