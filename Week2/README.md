@@ -9,7 +9,7 @@ h<sub>&theta;</sub>(x) = &theta;<sub>0</sub>+&theta;<sub>1</sub>x<sub>1</sub>+&t
     * Algorithm:
         Repeat{
         
-        &theta;<sub>j</sub> := &theta;<sub>j</sub>-&alpha;<sup>&part;</sup>&frasl;<sub>&part;&theta;<sub>j</sub></sub>(J(&theta;))
+        &theta;<sub>j</sub> := &theta;<sub>j</sub>-&alpha;<sup>&part;</sup>&frasl;<sub>&part;&theta;<sub>j</sub></sub>J(&theta;)
         
         }
         
@@ -46,7 +46,7 @@ h<sub>&theta;</sub>(x) = &theta;<sub>0</sub>+&theta;<sub>1</sub>x<sub>1</sub>+&t
         
 1. Vectorization
     * Use matrix operations may reduce the computation times.
-    * Previously, we have h<sub>&theta;</sub>(x) = &sum;&theta;<sub>j</sub>&sdot;X<sub>j</sub> &rArr; &theta;<sup>T</sup>&sdot;X
+    * Previously, we have h<sub>&theta;</sub>(x) = &sum;&theta;<sub>j</sub>&sdot;X<sub>j</sub> &rArr; &theta;<sup>T</sup>&sdot;x
     * Now for gradient descent, we have: &theta;<sub>j</sub> = &theta;<sub>j</sub>-&alpha;&sdot;<sup>1</sup>&frasl;<sub>m</sub>&sum;(h<sub>&theta;</sub>(x<sup>(i)</sup>)-y<sup>(i)</sup>)&sdot;x<sub>j</sub><sup>(i)</sup>, and we want to apply the same idea. Vectorize it!
         * Let &theta; = &theta;-&alpha;&sdot;&delta;
         * &delta; = <sup>1</sup>&frasl;<sub>m</sub>&sum;(h<sub>&theta;</sub>(x<sup>(i)</sup>)-y<sup>(i)</sup>)&sdot;x<sub>j</sub><sup>(i)</sup>
