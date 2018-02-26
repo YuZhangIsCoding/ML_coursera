@@ -12,13 +12,13 @@ figure; hold on;
 %               examples and 'ko' for the negative examples.
 %
 
+%the following is a quick way to visualize the data
+%gscatter(X(:,1), X(:,2), y, 'yk', 'o+', [12,12]);
 
-
-
-
-
-
-
+ad = find(y == 1);
+notad  = find(y == 0);
+plot(X(ad, 1), X(ad, 2), 'k+', 'LineWidth', 2, 'MarkerSize', 7);
+plot(X(notad, 1), X(notad, 2), 'yo', 'MarkerFaceColor', 'y', 'MarkerSize', 7);
 
 % =========================================================================
 

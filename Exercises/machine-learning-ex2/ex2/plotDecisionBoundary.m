@@ -41,6 +41,7 @@ else
 
     % Plot z = 0
     % Notice you need to specify the range [0, 0]
+    % Create only one contour level at z = 0
     contour(u, v, z, [0, 0], 'LineWidth', 2)
 end
 hold off
