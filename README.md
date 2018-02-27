@@ -92,3 +92,45 @@ h<sub>&theta;</sub>(x) = &theta;<sub>0</sub>+&theta;<sub>1</sub>x<sub>1</sub>+&t
             
    * Regularized logistic regression:
       **J(&theta;) = -<sup>1</sup>&frasl;<sub>m</sub>&sdot;[&sum;(ylog(h<sub>&theta;</sub>(x))+(1-y)log(1-h<sub>&theta;</sub>(x)))]+<sup>&lambda;</sup>&frasl;<sub>2m</sub>&sdot;&sum;&theta;<sub>j</sub><sup>2</sup>, *j = 1, 2, ..., n***
+## [Week 4](https://github.com/YuZhangIsCoding/ML_coursera/blob/master/Week4/README.md)
+1. Non-linear classification
+    * Too many features in hypothesis, logistic regression suffers overfitting or large computational cost.
+    * Computer vision: Car detection may result in millions of features if just include the quadratic features.
+
+2. Neural networks: algorithms that try to mimic the brain
+    * The "One learning algorithm" hypothesis
+    
+        1. Auditory cortex can learn to see if cut off audio input and replace with visual input.[<sup>1</sup>](https://www.nature.com/articles/35009102)
+        2. Somatosensory cortex learns to see.
+    * Model representation
+        * A [neuron](https://en.wikipedia.org/wiki/Neuron) is composed of nucleus, dendrites, axons, etc., where dendrites and axons serves as the "input wires" and "output wires", respectively.
+        
+            ![neuron_from_wikipedia](images/Neuron.png)
+        * Logistic unit can be built similarily on this neuron model:
+           
+            ![NeuronModel](images/NeuronModel.jpg) 
+        * Neural networks:
+
+            ![NeuralNetworks](images/NeuralNetworks.jpg)
+        * Mathematical representation: just like logistic regressions, but do it on every layer
+        * Forward propagation: vectorized implementation
+            
+            z<sup>(2)</sup> = &Theta;<sup>(1)</sup>x
+
+            a<sup>(2)</sup> = g(z<sup>(2)</sup>)
+
+            Add a<sub>0</sub><sup>(2)</sup> = 1 &rarr; a<sup>(2)</sup> at this layer has n+1 features
+
+            z<sup>(3)</sup> = &Theta;<sup>(2)</sup>a<sup>(2)</sup>
+
+            ...
+    * Examples: logic gate
+        * AND
+        * OR
+        * NOT
+        * (NOT x<sub>1</sub>) AND (NOT x<sub>2</sub>)
+        * XNOR (equals (x<sub>1</sub> AND x<sub>2</sub>) OR ((NOT x<sub>1</sub>) AND (NOT x<sub>2</sub>))
+        * XOR (equals (x<sub>1</sub> AND (NOT x<sub>2</sub>)) OR ((NOT x<sub>1</sub>) AND x<sub>2</sub>), another form (x<sub>1</sub> OR x<sub>2</sub>) AND ((NOT x<sub>1</sub>) OR (NOT x<sub>2</sub>)))
+    * Multiclass classification
+        * Multiple output units: one-vs-all
+        * Instead of output as discrete values such as y &isin; {1, 2, 3, ...}, we have y &isin; [[1;0;0;0],[0;1;0;0],[0;0;1;0], ...]
