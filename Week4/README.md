@@ -59,6 +59,8 @@
         x<sub>1</sub>, x<sub>2</sub> &isin; {0, 1}, we have following logic operations:
         * AND
             
+            ![AND](../images/AND.jpg)
+            
             h<sub>&theta;</sub>(x) = g(-30+20x<sub>1</sub>+20x<sub>2</sub>)
 
             x<sub>1</sub>|x<sub>2</sub>|h<sub>&theta;</sub>(x)
@@ -69,7 +71,9 @@
             1|1|g(10)&asymp;1
 
         * OR
-
+        
+            ![OR](../images/OR.jgp)
+            
             h<sub>&theta;</sub>(x) = g(-10+20x<sub>1</sub>+20x<sub>2</sub>)
 
             x<sub>1</sub>|x<sub>2</sub>|h<sub>&theta;</sub>(x)
@@ -80,7 +84,9 @@
             1|1|g(10)&asymp;1
 
         * NOT
-
+            
+            ![NOT](../images/NOT.jpg)
+            
             h<sub>&theta;</sub>(x) = g(10-20x<sub>1</sub>)
 
             x<sub>1</sub>|h<sub>&theta;</sub>(x)
@@ -90,6 +96,8 @@
 
         * (NOT x<sub>1</sub>) AND (NOT x<sub>2</sub>)
 
+            ![NotAandNotB](../images/NotAandNotB.jpg)
+            
             h<sub>&theta;</sub>(x) = g(10-20x<sub>1</sub>-20x<sub>2</sub>)
 
             x<sub>1</sub>|x<sub>2</sub>|h<sub>&theta;</sub>(x)
@@ -101,6 +109,8 @@
 
         * XNOR (equals (x<sub>1</sub> AND x<sub>2</sub>) OR ((NOT x<sub>1</sub>) AND (NOT x<sub>2</sub>))
         
+            ![XNOR](../images/XNOR.jpg)
+            
             a<sub>1</sub><sup>(2)</sup> = g(-30+20x<sub>1</sub>+20x<sub>2</sub>)
 
             a<sub>2</sub><sup>(2)</sup> = g(10-20x<sub>1</sub>-20x<sub>2</sub>)
@@ -117,6 +127,8 @@
         * XOR (equals (x<sub>1</sub> AND (NOT x<sub>2</sub>)) OR ((NOT x<sub>1</sub>) AND x<sub>2</sub>), another form (x<sub>1</sub> OR x<sub>2</sub>) AND ((NOT x<sub>1</sub>) OR (NOT x<sub>2</sub>)))
             
             Build based on XNOR:
+        
+            ![XOR](../images/XOR.jpg)
         
             a<sub>1</sub><sup>(2)</sup> = g(-30+20x<sub>1</sub>+20x<sub>2</sub>)
             
