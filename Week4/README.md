@@ -72,7 +72,7 @@
 
         * OR
         
-            ![OR](../images/OR.jgp)
+            ![OR](../images/OR.jpg)
             
             h<sub>&theta;</sub>(x) = g(-10+20x<sub>1</sub>+20x<sub>2</sub>)
 
