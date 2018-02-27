@@ -98,10 +98,7 @@ h<sub>&theta;</sub>(x) = &theta;<sub>0</sub>+&theta;<sub>1</sub>x<sub>1</sub>+&t
     * Computer vision: Car detection may result in millions of features if just include the quadratic features.
 
 2. Neural networks: algorithms that try to mimic the brain
-    * The "One learning algorithm" hypothesis
-    
-        1. Auditory cortex can learn to see if cut off audio input and replace with visual input.[<sup>1</sup>](https://www.nature.com/articles/35009102)
-        2. Somatosensory cortex learns to see.
+    * The "One learning algorithm" hypothesis: (Auditory cortex learns to see; Somatosensory cortex learns to see, etc)
     * Model representation
         * A [neuron](https://en.wikipedia.org/wiki/Neuron) is composed of nucleus, dendrites, axons, etc., where dendrites and axons serves as the "input wires" and "output wires", respectively.
         
@@ -112,8 +109,7 @@ h<sub>&theta;</sub>(x) = &theta;<sub>0</sub>+&theta;<sub>1</sub>x<sub>1</sub>+&t
         * Neural networks:
 
             ![NeuralNetworks](images/NeuralNetworks.jpg)
-        * Mathematical representation: just like logistic regressions, but do it on every layer
-        * Forward propagation: vectorized implementation
+        * Forward propagation: just like logistic regressions, but do it on every layer
             
             z<sup>(2)</sup> = &Theta;<sup>(1)</sup>x
 
@@ -124,13 +120,7 @@ h<sub>&theta;</sub>(x) = &theta;<sub>0</sub>+&theta;<sub>1</sub>x<sub>1</sub>+&t
             z<sup>(3)</sup> = &Theta;<sup>(2)</sup>a<sup>(2)</sup>
 
             ...
-    * Examples: logic gate
-        * AND
-        * OR
-        * NOT
-        * (NOT x<sub>1</sub>) AND (NOT x<sub>2</sub>)
-        * XNOR (equals (x<sub>1</sub> AND x<sub>2</sub>) OR ((NOT x<sub>1</sub>) AND (NOT x<sub>2</sub>))
-        * XOR (equals (x<sub>1</sub> AND (NOT x<sub>2</sub>)) OR ((NOT x<sub>1</sub>) AND x<sub>2</sub>), another form (x<sub>1</sub> OR x<sub>2</sub>) AND ((NOT x<sub>1</sub>) OR (NOT x<sub>2</sub>)))
+    * Examples: logic gates (AND, OR, NOT, (NOT A) AND (NOT B), XNOR, XOR)
     * Multiclass classification
         * Multiple output units: one-vs-all
         * Instead of output as discrete values such as y &isin; {1, 2, 3, ...}, we have y &isin; [[1;0;0;0],[0;1;0;0],[0;0;1;0], ...]
