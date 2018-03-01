@@ -46,22 +46,16 @@
       D<sub>ij</sub><sup>(l)</sup> = <sup>1</sup>&frasl;<sub>m</sub>&sdot;&Delta;<sub>ij</sub><sup>(l)</sup>, if j = 0
  
    * Mathematical prove:
-      
-      a. First we define
-      
-      <img src="https://latex.codecogs.com/svg.latex?Cost(i)=y^{(i)}\textrm{log}h_{\Theta}(x^{i})_k+(1-y^{(i)})\textrm{log}(1-h_{\Theta}(x^{i}))"/>
-      
-      
-      
-      b. For any inner layer, we have:
+        
+      1. *For any inner layer, we have:*
       
       <img src="https://latex.codecogs.com/svg.latex?\frac{{\partial}J(\Theta)}{\partial\Theta_{ij}^l}=\frac{{\partial}J(\Theta)}{{\partial}z_i^{l+1}}\cdot\frac{{\partial}z_i^(l+1)}{\partial\Theta_{ij}^l}=\frac{{\partial}J(\Theta)}{{\partial}z_i^{l+1}}{\cdot}a_j^l"/>
       
-      So we define a matrix &delta; for each layer and
+      So we define a matrix &delta; for each inner layers and
       
       <img src="https://latex.codecogs.com/svg.latex?\delta_i^l=\frac{{\partial}J(\Theta)}{{\partial}z_i^{l}}"/>
       
-      And we can derive recursively for each &delta;:
+      2. *And &delta; can be derived recursively from the next layer:*
             
       <img src="https://latex.codecogs.com/svg.latex?\frac{{\partial}J(\Theta)}{{\partial}z_i^{l}}=\sum_{k=0}^{S_{l+1}}\frac{{\partial}J(\Theta)}{{\partial}z_k^{l+1}}\cdot\frac{{\partial}z_k^{l+1}}{{\partial}z_i^{l}}=\sum_{k=0}^{S_{l+1}}\frac{{\partial}J(\Theta)}{{\partial}z_k^{l+1}}\cdot\frac{{\partial}(\Theta_k^l{\cdot}a^l)}{{\partial}a_i^l}\cdot\frac{{\partial}a_i^l}{{\partial}z_i^{l}}"/>
       
@@ -69,16 +63,36 @@
       
       And the second term in this equation can be derived as:
       
-      <img src="https://latex.codecogs.com/svg.latex?\because\frac{{\partial}(\Theta_k^l{\cdot}a^l)}{{\partial}a_i^l}=\frac{{\partial}(\cdots+\Theta_{ki}^l{\cdot}a_i^l+\cdots)}{{\partial}a_i^l}=\Theta_{ki}^l"/>
+      <img src="https://latex.codecogs.com/svg.latex?\frac{{\partial}(\Theta_k^l{\cdot}a^l)}{{\partial}a_i^l}=\frac{{\partial}(\cdots+\Theta_{ki}^l{\cdot}a_i^l+\cdots)}{{\partial}a_i^l}=\Theta_{ki}^l"/>
       
       And the last term is:
       
       <img src="https://latex.codecogs.com/svg.latex?\frac{{\partial}a_i^l}{{\partial}z_i^{l}}=g'(z_i^l)=a_i^l(1-a_i^l)"/>
       
-      And put it together:
+      Put them together:
       
       <img src="https://latex.codecogs.com/svg.latex?\delta_i^l=\sum_{k=0}^{S_{l+1}}\delta_k^{l+1}{\cdot}\theta_{ki}^l{\cdot}g'(z_i^l)=((\theta^T)_i\cdot\delta^{l+1})g'(z_i^l)"/>
       
-      And we can vectorize it as
+      Then, we can vectorize it as
       
       <img src="https://latex.codecogs.com/svg.latex?\delta^l=(\theta^T\cdot\delta^{l+1}).*g'(z^l)"/>
+      
+      3. *For the output layer, we have:*
+      
+      <img src="https://latex.codecogs.com/svg.latex?\frac{{\partial}J(\Theta)}{{\partial}z_i^{L}}=-\frac{1}{m}\frac{{\partial}\big(y_i\textrm{log}h_{\Theta}(x)_i+(1-y_i)\textrm{log}(1-h_{\Theta}(x)_i)\big)}{{\partial}z_i^{L}}\\=-\frac{1}{m}\frac{{\partial}\big(y_i\textrm{log}h_{\Theta}(x)_i+(1-y_i)\textrm{log}(1-h_{\Theta}(x)_i)\big)}{{\partial}h_{\Theta}(x^{L})_i}\frac{{\partial}h_{\Theta}(x^{L})_i}{{\partial}z_i^{L}}\\=-\frac{1}{m}\Big(\frac{y_i}{h_{\Theta}(x^{L})_i}-\frac{1-y_i}{1-h_{\Theta}(x^L)_i}\Big)g'(z_i^L)\\=-\frac{1}{m}\frac{y_i-h_{\Theta}(x^{L})_i}{h_{\Theta}(x^{L})_i(1-h_{\Theta}(x^{L})_i)}g'(z_i^L)"/>
+      
+      Since we have
+      
+      <img src="https://latex.codecogs.com/svg.latex?g'(z_i^L)=h_{\Theta}(x^{L})_i(1-h_{\Theta}(x^{L})_i)"/>
+      
+      We can derive that
+      
+      <img src="https://latex.codecogs.com/svg.latex?\frac{{\partial}J(\Theta)}{{\partial}z_i^{L}}=\frac{1}{m}\big(h_{\Theta}(x^{L})_i-y_i\big)"/>
+      
+      Vectorize it, we define:
+      
+      <img src="https://latex.codecogs.com/svg.latex?\delta^L=h_{\Theta}(x^{L})-y=a^L-y"/>
+      
+      <sup>1</sup>&frasl;<sub>m</sub> is a constant, and it won't harm the recursion of &delta;<sup>l</sup>. We will need to multiply it to get the derivates in the end.
+      
+      * **Combine a, b, c together, we now see that the gradients in the algorithm are correct.**
