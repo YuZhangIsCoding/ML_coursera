@@ -49,50 +49,52 @@
         
       1. *For any inner layer, we have:*
       
-      <img src="https://latex.codecogs.com/svg.latex?\frac{{\partial}J(\Theta)}{\partial\Theta_{ij}^l}=\frac{{\partial}J(\Theta)}{{\partial}z_i^{l+1}}\cdot\frac{{\partial}z_i^(l+1)}{\partial\Theta_{ij}^l}=\frac{{\partial}J(\Theta)}{{\partial}z_i^{l+1}}{\cdot}a_j^l"/>
+         <img src="https://latex.codecogs.com/svg.latex?\frac{{\partial}J(\Theta)}{\partial\Theta_{ij}^l}=\frac{{\partial}J(\Theta)}{{\partial}z_i^{l+1}}\cdot\frac{{\partial}z_i^(l+1)}{\partial\Theta_{ij}^l}=\frac{{\partial}J(\Theta)}{{\partial}z_i^{l+1}}{\cdot}a_j^l"/>
       
-      So we define a matrix &delta; for each inner layers and
+         So we define a matrix &delta; for each inner layers and
       
-      <img src="https://latex.codecogs.com/svg.latex?\delta_i^l=\frac{{\partial}J(\Theta)}{{\partial}z_i^{l}}"/>
+         <img src="https://latex.codecogs.com/svg.latex?\delta_i^l=\frac{{\partial}J(\Theta)}{{\partial}z_i^{l}}"/>
       
-      2. *And &delta; can be derived recursively from the next layer:*
+         Then we have
+      
+         <img src="https://latex.codecogs.com/svg.latex?\frac{{\partial}J(\Theta)}{\partial\Theta_{ij}^l}=\delta_i^{l+1}{\cdot}a_j^l"/>
+      
+      2. *&delta; can be derived recursively from the next layer:*
             
-      <img src="https://latex.codecogs.com/svg.latex?\frac{{\partial}J(\Theta)}{{\partial}z_i^{l}}=\sum_{k=0}^{S_{l+1}}\frac{{\partial}J(\Theta)}{{\partial}z_k^{l+1}}\cdot\frac{{\partial}z_k^{l+1}}{{\partial}z_i^{l}}=\sum_{k=0}^{S_{l+1}}\frac{{\partial}J(\Theta)}{{\partial}z_k^{l+1}}\cdot\frac{{\partial}(\Theta_k^l{\cdot}a^l)}{{\partial}a_i^l}\cdot\frac{{\partial}a_i^l}{{\partial}z_i^{l}}"/>
+         <img src="https://latex.codecogs.com/svg.latex?\frac{{\partial}J(\Theta)}{{\partial}z_i^{l}}=\sum_{k=0}^{S_{l+1}}\frac{{\partial}J(\Theta)}{{\partial}z_k^{l+1}}\cdot\frac{{\partial}z_k^{l+1}}{{\partial}z_i^{l}}=\sum_{k=0}^{S_{l+1}}\frac{{\partial}J(\Theta)}{{\partial}z_k^{l+1}}\cdot\frac{{\partial}(\Theta_k^l{\cdot}a^l)}{{\partial}a_i^l}\cdot\frac{{\partial}a_i^l}{{\partial}z_i^{l}}"/>
       
-      The first term in the summation equation is just *&delta;<sub>i</sub><sup>l+1</sup>*
+         The first term in the summation equation is just *&delta;<sub>i</sub><sup>l+1</sup>*, and the second term in this equation can be derived as:
       
-      And the second term in this equation can be derived as:
+         <img src="https://latex.codecogs.com/svg.latex?\frac{{\partial}(\Theta_k^l{\cdot}a^l)}{{\partial}a_i^l}=\frac{{\partial}(\cdots+\Theta_{ki}^l{\cdot}a_i^l+\cdots)}{{\partial}a_i^l}=\Theta_{ki}^l"/>
       
-      <img src="https://latex.codecogs.com/svg.latex?\frac{{\partial}(\Theta_k^l{\cdot}a^l)}{{\partial}a_i^l}=\frac{{\partial}(\cdots+\Theta_{ki}^l{\cdot}a_i^l+\cdots)}{{\partial}a_i^l}=\Theta_{ki}^l"/>
+         And the last term is:
       
-      And the last term is:
+         <img src="https://latex.codecogs.com/svg.latex?\frac{{\partial}a_i^l}{{\partial}z_i^{l}}=g'(z_i^l)=a_i^l(1-a_i^l)"/>
       
-      <img src="https://latex.codecogs.com/svg.latex?\frac{{\partial}a_i^l}{{\partial}z_i^{l}}=g'(z_i^l)=a_i^l(1-a_i^l)"/>
+         Put them together:
       
-      Put them together:
+         <img src="https://latex.codecogs.com/svg.latex?\delta_i^l=\sum_{k=0}^{S_{l+1}}\delta_k^{l+1}{\cdot}\theta_{ki}^l{\cdot}g'(z_i^l)=((\theta^T)_i\cdot\delta^{l+1})g'(z_i^l)"/>
       
-      <img src="https://latex.codecogs.com/svg.latex?\delta_i^l=\sum_{k=0}^{S_{l+1}}\delta_k^{l+1}{\cdot}\theta_{ki}^l{\cdot}g'(z_i^l)=((\theta^T)_i\cdot\delta^{l+1})g'(z_i^l)"/>
+         Then, we can vectorize it as
       
-      Then, we can vectorize it as
-      
-      <img src="https://latex.codecogs.com/svg.latex?\delta^l=(\theta^T\cdot\delta^{l+1}).*g'(z^l)"/>
+         <img src="https://latex.codecogs.com/svg.latex?\delta^l=(\theta^T\cdot\delta^{l+1}).*g'(z^l)"/>
       
       3. *For the output layer, we have:*
       
-      <img src="https://latex.codecogs.com/svg.latex?\frac{{\partial}J(\Theta)}{{\partial}z_i^{L}}=-\frac{1}{m}\frac{{\partial}\big(y_i\textrm{log}h_{\Theta}(x)_i+(1-y_i)\textrm{log}(1-h_{\Theta}(x)_i)\big)}{{\partial}z_i^{L}}\\=-\frac{1}{m}\frac{{\partial}\big(y_i\textrm{log}h_{\Theta}(x)_i+(1-y_i)\textrm{log}(1-h_{\Theta}(x)_i)\big)}{{\partial}h_{\Theta}(x^{L})_i}\frac{{\partial}h_{\Theta}(x^{L})_i}{{\partial}z_i^{L}}\\=-\frac{1}{m}\Big(\frac{y_i}{h_{\Theta}(x^{L})_i}-\frac{1-y_i}{1-h_{\Theta}(x^L)_i}\Big)g'(z_i^L)\\=-\frac{1}{m}\frac{y_i-h_{\Theta}(x^{L})_i}{h_{\Theta}(x^{L})_i(1-h_{\Theta}(x^{L})_i)}g'(z_i^L)"/>
+         <img src="https://latex.codecogs.com/svg.latex?\frac{{\partial}J(\Theta)}{{\partial}z_i^{L}}=-\frac{1}{m}\frac{{\partial}\big(y_i\textrm{log}h_{\Theta}(x)_i+(1-y_i)\textrm{log}(1-h_{\Theta}(x)_i)\big)}{{\partial}z_i^{L}}\\=-\frac{1}{m}\frac{{\partial}\big(y_i\textrm{log}h_{\Theta}(x)_i+(1-y_i)\textrm{log}(1-h_{\Theta}(x)_i)\big)}{{\partial}h_{\Theta}(x^{L})_i}\frac{{\partial}h_{\Theta}(x^{L})_i}{{\partial}z_i^{L}}\\=-\frac{1}{m}\Big(\frac{y_i}{h_{\Theta}(x^{L})_i}-\frac{1-y_i}{1-h_{\Theta}(x^L)_i}\Big)g'(z_i^L)\\=-\frac{1}{m}\frac{y_i-h_{\Theta}(x^{L})_i}{h_{\Theta}(x^{L})_i(1-h_{\Theta}(x^{L})_i)}g'(z_i^L)"/>
       
-      Since we have
+         Since we have
       
-      <img src="https://latex.codecogs.com/svg.latex?g'(z_i^L)=h_{\Theta}(x^{L})_i(1-h_{\Theta}(x^{L})_i)"/>
+         <img src="https://latex.codecogs.com/svg.latex?g'(z_i^L)=h_{\Theta}(x^{L})_i(1-h_{\Theta}(x^{L})_i)"/>
       
-      We can derive that
+         We can derive that
       
-      <img src="https://latex.codecogs.com/svg.latex?\frac{{\partial}J(\Theta)}{{\partial}z_i^{L}}=\frac{1}{m}\big(h_{\Theta}(x^{L})_i-y_i\big)"/>
+         <img src="https://latex.codecogs.com/svg.latex?\frac{{\partial}J(\Theta)}{{\partial}z_i^{L}}=\frac{1}{m}\big(h_{\Theta}(x^{L})_i-y_i\big)"/>
       
-      Vectorize it, we define:
+         Vectorize it, we define:
       
-      <img src="https://latex.codecogs.com/svg.latex?\delta^L=h_{\Theta}(x^{L})-y=a^L-y"/>
+         <img src="https://latex.codecogs.com/svg.latex?\delta^L=h_{\Theta}(x^{L})-y=a^L-y"/>
       
-      <sup>1</sup>&frasl;<sub>m</sub> is a constant, and it won't harm the recursion of &delta;<sup>l</sup>. We will need to multiply it to get the derivates in the end.
+         <sup>1</sup>&frasl;<sub>m</sub> is a constant, and it won't harm the recursion of &delta;<sup>l</sup>. We will need to multiply it to get the derivates in the end.
       
       * **Combine a, b, c together, we now see that the gradients in the algorithm are correct.**
