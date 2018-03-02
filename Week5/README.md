@@ -98,3 +98,38 @@
          <sup>1</sup>&frasl;<sub>m</sub> is a constant, and it won't harm the recursion of &delta;<sup>l</sup>. We will need to multiply it to get the derivates in the end.
       
       * **Combine a, b, c together, we now see that the gradients in the algorithm are correct.**
+
+   * Backpropagation intuition
+
+      ![BackPropIntuition](../images/BackPropIntuition.jpg)
+
+   * Unrolling Parameters
+
+      Unroll the &Theta; matrices into the just one matrix and recover after backpropogation.
+
+   * Gradient checking
+
+       <img src="https://latex.codecogs.com/svg.latex?\frac{{\partial}J(\Theta)}{\Theta_1}\approx\frac{J(\Theta_1+\epsilon,\Theta_2,...)-J(\Theta_1-\epsilon,...)}{2\epsilon}/>
+    
+   * Initial value of &Theta;
+      * Zero initialization or initialized with same value for each layer: after each update, each unit in the same layer will have identical parameters
+      * Random initialization: symmetry breaking.
+
+         One effective strategy for choosing &epsilon; is to base it on the number of units in the network. A good choice of &epsilon; is 
+
+         <img src="https://latex.codecogs.com/svg.latex?\epsilon=\frac{\sqrt{6}}{\sqrt{L_{in}+L_{out}}}/>
+
+         Where L<sub>In</sub> = S<sub>l</sub> and S<sub>Out</sub> = S<sub>l+1</sub>
+
+         Initialize each &Theta;<sub>ij</sub><sup>(l)</sup> to a random value in [-&epsilon;, &epsilon;]
+
+   * Put it together
+      * Pick a network architecture
+      * Reasonable defaults: 1 hiddern layer or if >1 hidden layers, have same number of hidden units in every layer
+      * Training a neural network
+         1. Randomly initialize weights
+         2. Implement forward propagation to get H<sub>&Theta;</sub>(x<sup>(l)</sup>) for each layer
+         3. Compute cost function J(&Theta;)
+         4. Implement backpropagation to compute partial derivatives
+         5. Use gradient checking to compare partial derivaties compute using backpropagation vs. using numerical estimate of gradients
+         6. Use gradient descent or advanced optimized method with backpropation to try to minimize J(&Theta;) as a function of parameters &Theta; (Notice that J(&Theta;) is non-convex, so we may end up finding a local minimum)
