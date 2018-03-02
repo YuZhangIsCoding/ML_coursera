@@ -146,7 +146,7 @@ h<sub>&theta;</sub>(x) = &theta;<sub>0</sub>+&theta;<sub>1</sub>x<sub>1</sub>+&t
 
    * Backpropagation intuition
 
-      ![BackPropIntuition](../images/BackPropIntuition.jpg)
+      ![BackPropIntuition](images/BackPropIntuition.jpg)
 
    * Unrolling Parameters: Unroll the &Theta; matrices into the just one matrix and recover after backpropogation.
 
