@@ -109,19 +109,19 @@
 
    * Gradient checking
 
-       <img src="https://latex.codecogs.com/svg.latex?\frac{{\partial}J(\Theta)}{\Theta_1}\approx\frac{J(\Theta_1+\epsilon,\Theta_2,...)-J(\Theta_1-\epsilon,...)}{2\epsilon}/>
+       <img src="https://latex.codecogs.com/svg.latex?\frac{{\partial}J(\Theta)}{\Theta_1}\approx\frac{J(\Theta_1+\epsilon,\Theta_2,...)-J(\Theta_1-\epsilon,...)}{2\epsilon}"/>
     
    * Initial value of &Theta;
       * Zero initialization or initialized with same value for each layer: after each update, each unit in the same layer will have identical parameters
       * Random initialization: symmetry breaking.
+         
+         Initialize each &Theta;<sub>ij</sub><sup>(l)</sup> to a random value in [-&epsilon;, &epsilon;]
 
          One effective strategy for choosing &epsilon; is to base it on the number of units in the network. A good choice of &epsilon; is 
 
-         <img src="https://latex.codecogs.com/svg.latex?\epsilon=\frac{\sqrt{6}}{\sqrt{L_{in}+L_{out}}}/>
+         <img src="https://latex.codecogs.com/svg.latex?\epsilon=\frac{\sqrt{6}}{\sqrt{L_{in}+L_{out}}}"/>
 
          Where L<sub>In</sub> = S<sub>l</sub> and S<sub>Out</sub> = S<sub>l+1</sub>
-
-         Initialize each &Theta;<sub>ij</sub><sup>(l)</sup> to a random value in [-&epsilon;, &epsilon;]
 
    * Put it together
       * Pick a network architecture
