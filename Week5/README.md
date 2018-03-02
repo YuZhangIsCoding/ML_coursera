@@ -119,7 +119,7 @@
 
    * Gradient checking
 
-       <img src="https://latex.codecogs.com/svg.latex?\frac{{\partial}J(\Theta)}{\Theta_{ij}}\approx\frac{J(...,\Theta_{ij}+\epsilon,...)-J(...,\Theta_{ij}-\epsilon,...)}{2\epsilon}"/>
+       <img src="https://latex.codecogs.com/svg.latex?\frac{{\partial}J(\Theta)}{\Theta_{ij}^{l}}\approx\frac{J(...,\Theta_{ij}^{l}+\epsilon,...)-J(...,\Theta_{ij}^{l}-\epsilon,...)}{2\epsilon}"/>
     
    * Initial value of &Theta;
       * Zero initialization or initialized with same value for each layer: after each update, each unit in the same layer will have identical parameters
