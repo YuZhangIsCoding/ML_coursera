@@ -12,7 +12,7 @@
       K is the number of output units/classes
    * Gradients
       
-      <img src="https://latex.codecogs.com/svg.latex?\frac{\partial}{\partial\Theta_{ij}^{(l)}}J(\Theta)=a_j^{(l)}\cdot\delta_i^{(l+1)}"/>
+      <img src="https://latex.codecogs.com/svg.latex?\frac{\partial}{\partial\Theta_{ij}^{(l)}}J(\Theta)=\frac{1}{m}a_j^{(l)}\cdot\delta_i^{(l+1)}+\frac{\lambda}{m}\Theta_{ij}^{(l)}"/>
       
       For the output unit:
       
@@ -41,7 +41,7 @@
       
       &nbsp;&nbsp;&nbsp;&nbsp;&Delta;<sub>ij</sub><sup>(l)</sup> = &Delta;<sub>ij</sub><sup>(l)</sup>+a<sub>j</sub><sup>(l)</sup>&delta;<sup>(l+1)</sup>, can be vectorized as &Delta;<sup>(l)</sup> = &Delta;<sup>(l)</sup>+&delta;<sup>(l+1)</sup>&sdot;(a<sup>(l)</sup>)<sup>T</sup>
       
-      D<sub>ij</sub><sup>(l)</sup> = <sup>1</sup>&frasl;<sub>m</sub>&sdot;&Delta;<sub>ij</sub><sup>(l)</sup>+&lambda;&Theta;<sub>ij</sub><sup>(l)</sup>, if j &ne; 0
+      D<sub>ij</sub><sup>(l)</sup> = <sup>1</sup>&frasl;<sub>m</sub>&sdot;&Delta;<sub>ij</sub><sup>(l)</sup>+<sup>&lambda;</sup>&frasl;<sub>m</sub>&Theta;<sub>ij</sub><sup>(l)</sup>, if j &ne; 0
       
       D<sub>ij</sub><sup>(l)</sup> = <sup>1</sup>&frasl;<sub>m</sub>&sdot;&Delta;<sub>ij</sub><sup>(l)</sup>, if j = 0
  
@@ -49,7 +49,7 @@
         
       1. *For any inner layer, we have:*
       
-         <img src="https://latex.codecogs.com/svg.latex?\frac{{\partial}J(\Theta)}{\partial\Theta_{ij}^l}=\frac{{\partial}J(\Theta)}{{\partial}z_i^{l+1}}\cdot\frac{{\partial}z_i^(l+1)}{\partial\Theta_{ij}^l}=\frac{{\partial}J(\Theta)}{{\partial}z_i^{l+1}}{\cdot}a_j^l"/>
+         <img src="https://latex.codecogs.com/svg.latex?\frac{{\partial}J(\Theta)}{\partial\Theta_{ij}^l}=\frac{{\partial}J(\Theta)}{{\partial}z_i^{l+1}}\cdot\frac{{\partial}z_i^{l+1}}{\partial\Theta_{ij}^l}=\frac{{\partial}J(\Theta)}{{\partial}z_i^{l+1}}{\cdot}a_j^l"/>
       
          So we define a matrix &delta; for each inner layers and
       
