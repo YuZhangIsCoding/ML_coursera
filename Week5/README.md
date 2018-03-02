@@ -3,7 +3,7 @@
 
    * Cost function:
   
-      <img src="https://latex.codecogs.com/svg.latex?J(\Theta)=-\frac{1}{m}\Bigg[\sum_{i=1}^{m}\sum_{k=1}^{K}y_k^{(i)}\textrm{log}h_{\Theta}(x^{i})_k+(1-y_k^{(i)})\textrm{log}(1-h_{\Theta}(x^{i})_k)\Bigg]+\frac{\lambda}{2m}\sum_{l=1}^{L-1}\sum_{i=1}^{S_l}\sum_{j=1}^{S_{l+1}}(\Theta_{ji}^{(l)})^2"/>
+      <img src="https://latex.codecogs.com/svg.latex?J(\Theta)=-\frac{1}{m}\Bigg[\sum_{t=1}^{m}\sum_{k=1}^{K}y_k^{(t)}\textrm{log}h_{\Theta}(x)_k^{(t)}+(1-y_k^{(t)})\textrm{log}(1-h_{\Theta}(x)_k^{(t)})\Bigg]+\frac{\lambda}{2m}\sum_{l=1}^{L-1}\sum_{i=1}^{S_l}\sum_{j=1}^{S_{l+1}}(\Theta_{ji}^{l})^2"/>
 
       where *L* is the total number of layers in the network
     
@@ -12,38 +12,38 @@
       K is the number of output units/classes
    * Gradients
       
-      <img src="https://latex.codecogs.com/svg.latex?\frac{\partial}{\partial\Theta_{ij}^{(l)}}J(\Theta)=\frac{1}{m}a_j^{(l)}\cdot\delta_i^{(l+1)}+\frac{\lambda}{m}\Theta_{ij}^{(l)}"/>
+      <img src="https://latex.codecogs.com/svg.latex?\frac{\partial}{\partial\Theta_{ij}^{l}}J(\Theta)=\frac{1}{m}\sum_{t=1}^{m}(a_j^{l})^{(t)}\cdot(\delta_i^{l+1})^{(t)}+\frac{\lambda}{m}\Theta_{ij}^{l}"/>
       
       For the output unit:
       
-      <img src="https://latex.codecogs.com/svg.latex?\delta_i^{(L)}=a_j^{(L)}-y_j"/>
+      <img src="https://latex.codecogs.com/svg.latex?\delta_i^{L}=a_j^{L}-y_j"/>
       
       For inner layers:
       
-      <img src="https://latex.codecogs.com/svg.latex?\delta_i^{(l)}=(\Theta^{(l)})^T\cdot\delta^{(l+1)}.*g'(z^l)=(\Theta^{(l)})^T\cdot\delta^{(l+1)}.*a^{(l)}.*(1-a^{(l)})"/>
+      <img src="https://latex.codecogs.com/svg.latex?\delta_i^{l}=(\Theta^{l})^T\cdot\delta^{l+1}.*g'(z^l)=(\Theta^{l})^T\cdot\delta^{l+1}.*a^{l}.*(1-a^{l})"/>
 
    
    * Algorithm:
    
       Training set {(x<sup>(1)</sup>, x<sup>(1)</sup>), ..., (x<sup>(m)</sup>, x<sup>(m)</sup>)}
       
-      Set &Delta;<sub>ij</sub><sup>(l)</sup> = 0 for all i, j
+      Set &Delta;<sub>ij</sub><sup>l</sup> = 0 for all i, j
       
       For i = 1 to m &larr; (x<sup>(i)</sup>, x<sup>(i)</sup>):
       
       &nbsp;&nbsp;&nbsp;&nbsp;a<sup>(1)</sup> = x<sup>(i)</sup>
       
-      &nbsp;&nbsp;&nbsp;&nbsp;Forward propagation to compute a<sup>(l)</sup> for l = 2, ..., L
+      &nbsp;&nbsp;&nbsp;&nbsp;Forward propagation to compute a<sup>l</sup> for l = 2, ..., L
       
-      &nbsp;&nbsp;&nbsp;&nbsp;Using y<sup>(i)</sup> to compute &delta;<sup>(L)</sup> = a<sup>(L)</sup>-y<sup>(i)</sup>
+      &nbsp;&nbsp;&nbsp;&nbsp;Using y<sup>(i)</sup> to compute &delta;<sup>L</sup> = a<sup>L</sup>-y<sup>(i)</sup>
       
-      &nbsp;&nbsp;&nbsp;&nbsp;Compute &delta;<sup>(L-1)</sup>, ..., &delta;<sup>(2)</sup>
+      &nbsp;&nbsp;&nbsp;&nbsp;Compute &delta;<sup>L-1</sup>, ..., &delta;<sup>(2)</sup>
       
-      &nbsp;&nbsp;&nbsp;&nbsp;&Delta;<sub>ij</sub><sup>(l)</sup> = &Delta;<sub>ij</sub><sup>(l)</sup>+a<sub>j</sub><sup>(l)</sup>&delta;<sup>(l+1)</sup>, can be vectorized as &Delta;<sup>(l)</sup> = &Delta;<sup>(l)</sup>+&delta;<sup>(l+1)</sup>&sdot;(a<sup>(l)</sup>)<sup>T</sup>
+      &nbsp;&nbsp;&nbsp;&nbsp;&Delta;<sub>ij</sub><sup>l</sup> = &Delta;<sub>ij</sub><sup>l</sup>+a<sub>j</sub><sup>l</sup>&delta;<sup>l+1</sup>, can be vectorized as &Delta;<sup>l</sup> = &Delta;<sup>l</sup>+&delta;<sup>l+1</sup>&sdot;(a<sup>l</sup>)<sup>T</sup>
       
-      D<sub>ij</sub><sup>(l)</sup> = <sup>1</sup>&frasl;<sub>m</sub>&sdot;&Delta;<sub>ij</sub><sup>(l)</sup>+<sup>&lambda;</sup>&frasl;<sub>m</sub>&Theta;<sub>ij</sub><sup>(l)</sup>, if j &ne; 0
+      D<sub>ij</sub><sup>l</sup> = <sup>1</sup>&frasl;<sub>m</sub>&sdot;&Delta;<sub>ij</sub><sup>l</sup>+<sup>&lambda;</sup>&frasl;<sub>m</sub>&Theta;<sub>ij</sub><sup>l</sup>, if j &ne; 0
       
-      D<sub>ij</sub><sup>(l)</sup> = <sup>1</sup>&frasl;<sub>m</sub>&sdot;&Delta;<sub>ij</sub><sup>(l)</sup>, if j = 0
+      D<sub>ij</sub><sup>l</sup> = <sup>1</sup>&frasl;<sub>m</sub>&sdot;&Delta;<sub>ij</sub><sup>l</sup>, if j = 0
  
    * Mathematical prove:
         
@@ -115,7 +115,7 @@
       * Zero initialization or initialized with same value for each layer: after each update, each unit in the same layer will have identical parameters
       * Random initialization: symmetry breaking.
          
-         Initialize each &Theta;<sub>ij</sub><sup>(l)</sup> to a random value in [-&epsilon;, &epsilon;]
+         Initialize each &Theta;<sub>ij</sub><sup>l</sup> to a random value in [-&epsilon;, &epsilon;]
 
          One effective strategy for choosing &epsilon; is to base it on the number of units in the network. A good choice of &epsilon; is 
 
@@ -128,7 +128,7 @@
       * Reasonable defaults: 1 hiddern layer or if >1 hidden layers, have same number of hidden units in every layer
       * Training a neural network
          1. Randomly initialize weights
-         2. Implement forward propagation to get H<sub>&Theta;</sub>(x<sup>(l)</sup>) for each layer
+         2. Implement forward propagation to get H<sub>&Theta;</sub>(x<sup>l</sup>) for each layer
          3. Compute cost function J(&Theta;)
          4. Implement backpropagation to compute partial derivatives
          5. Use gradient checking to compare partial derivaties compute using backpropagation vs. using numerical estimate of gradients
