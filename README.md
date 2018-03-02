@@ -130,36 +130,38 @@ h<sub>&theta;</sub>(x) = &theta;<sub>0</sub>+&theta;<sub>1</sub>x<sub>1</sub>+&t
 
    * Cost function:
   
-      <img src="https://latex.codecogs.com/svg.latex?J(\Theta)=-\frac{1}{m}\Bigg[\sum_{i=1}^{m}\sum_{k=1}^{K}y_k^{(i)}\textrm{log}h_{\Theta}(x^{i})_k+(1-y_k^{(i)})\textrm{log}(1-h_{\Theta}(x^{i})_k)\Bigg]+\frac{\lambda}{2m}\sum_{l=1}^{L-1}\sum_{i=1}^{S_l}\sum_{j=1}^{S_{l+1}}(\Theta_{ji}^{(l)})^2"/>
+      <img src="https://latex.codecogs.com/svg.latex?J(\Theta)=-\frac{1}{m}\Bigg[\sum_{t=1}^{m}\sum_{k=1}^{K}y_k^{(t)}\textrm{log}h_{\Theta}(x)_k^{(t)}+(1-y_k^{(t)})\textrm{log}(1-h_{\Theta}(x)_k^{(t)})\Bigg]+\frac{\lambda}{2m}\sum_{l=1}^{L-1}\sum_{i=1}^{S_l}\sum_{j=1}^{S_{l+1}}(\Theta_{ji}^{l})^2"/>
 
    * Gradients
       
-      <img src="https://latex.codecogs.com/svg.latex?\frac{\partial}{\partial\Theta_{ij}^{(l)}}J(\Theta)=\frac{1}{m}a_j^{(l)}\cdot\delta_i^{(l+1)}+\frac{\lambda}{m}\Theta_{ij}^{(l)}"/>
+      <img src="https://latex.codecogs.com/svg.latex?\frac{\partial}{\partial\Theta_{ij}^{l}}J(\Theta)=\frac{1}{m}\sum_{t=1}^{m}(a_j^{l})^{(t)}\cdot(\delta_i^{l+1})^{(t)}+\frac{\lambda}{m}\Theta_{ij}^{l}"/>
       
       For the output unit:
       
-      <img src="https://latex.codecogs.com/svg.latex?\delta_i^{(L)}=a_j^{(L)}-y_j"/>
+      <img src="https://latex.codecogs.com/svg.latex?\delta_i^{L}=a_j^{L}-y_j"/>
       
       For inner layers:
       
-      <img src="https://latex.codecogs.com/svg.latex?\delta_i^{(l)}=(\Theta^{(l)})^T\cdot\delta^{(l+1)}.*g'(z^{(l)})=(\Theta^{(l)})^T\cdot\delta^{(l+1)}.*a^{(l)}.*(1-a^{(l)})"/>
- 
+      <img src="https://latex.codecogs.com/svg.latex?\delta_i^{l}=(\Theta^{l})^T\cdot\delta^{l+1}.*g'(z^l)=(\Theta^{l})^T\cdot\delta^{l+1}.*a^{l}.*(1-a^{l})"/>
+
    * Backpropagation intuition
 
-      ![BackPropIntuition](images/BackPropIntuition.jpg)
+      ![BackPropIntuition](../images/BackPropIntuition.jpg)
 
    * Unrolling Parameters: Unroll the &Theta; matrices into the just one matrix and recover after backpropogation.
+
    * Gradient checking
 
-       <img src="https://latex.codecogs.com/svg.latex?\frac{{\partial}J(\Theta)}{\Theta_1}\approx\frac{J(\Theta_1+\epsilon,\Theta_2,...)-J(\Theta_1-\epsilon,...)}{2\epsilon}"/>
+       <img src="https://latex.codecogs.com/svg.latex?\frac{{\partial}J(\Theta)}{\Theta_{ij}^{l}}\approx\frac{J(...,\Theta_{ij}^{l}+\epsilon,...)-J(...,\Theta_{ij}^{l}-\epsilon,...)}{2\epsilon}"/>
     
-   * Initial value of &Theta;: Use random initialization for symmetry breaking.
+   * Initial value of &Theta; Use random initialization for symmetry breaking.
+
    * Put it together
       * Pick a network architecture
       * Reasonable defaults: 1 hiddern layer or if >1 hidden layers, have same number of hidden units in every layer
       * Training a neural network
          1. Randomly initialize weights
-         2. Implement forward propagation to get H<sub>&Theta;</sub>(x<sup>(l)</sup>) for each layer
+         2. Implement forward propagation to get H<sub>&Theta;</sub>(x<sup>l</sup>) for each layer
          3. Compute cost function J(&Theta;)
          4. Implement backpropagation to compute partial derivatives
          5. Use gradient checking to compare partial derivaties compute using backpropagation vs. using numerical estimate of gradients
