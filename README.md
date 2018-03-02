@@ -142,11 +142,11 @@ h<sub>&theta;</sub>(x) = &theta;<sub>0</sub>+&theta;<sub>1</sub>x<sub>1</sub>+&t
       
       For inner layers:
       
-      <img src="https://latex.codecogs.com/svg.latex?\delta_i^{(l)}=(\Theta^{(l)})^T\cdot\delta^{(l+1)}.*g'(z^l)=(\Theta^{(l)})^T\cdot\delta^{(l+1)}.*a^{(l)}.*(1-a^{(l)})"/>
+      <img src="https://latex.codecogs.com/svg.latex?\delta_i^{(l)}=(\Theta^{(l)})^T\cdot\delta^{(l+1)}.*g'(z^{(l)})=(\Theta^{(l)})^T\cdot\delta^{(l+1)}.*a^{(l)}.*(1-a^{(l)})"/>
  
    * Backpropagation intuition
 
-      ![BackPropIntuition](../images/BackPropIntuition.jpg)
+      ![BackPropIntuition](images/BackPropIntuition.jpg)
 
    * Unrolling Parameters: Unroll the &Theta; matrices into the just one matrix and recover after backpropogation.
    * Gradient checking
