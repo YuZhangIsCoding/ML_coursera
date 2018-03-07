@@ -20,12 +20,17 @@
 
         Suppose we have a bunch of polynomial model to select, let d = degree of polynomial
         
-        d = 1, h<sub>&theta;</sub>(x) = &theta;<sub>0</sub>+&theta;<sub>1</sub>x &rarr; &theta;<sup>1</sup> &rarr; J<sub>test</sub>(&theta;<sup>(1)</sup>)
-        d = 2, h<sub>&theta;</sub>(x) = &theta;<sub>0</sub>+&theta;<sub>1</sub>x+&theta;<sub>2</sub>x<sup>2</sup> &rarr; &theta;<sup>2</sup> &rarr; J<sub>test</sub>(&theta;<sup>(2)</sup>)
+        d = 1, h<sub>&theta;</sub>(x) = &theta;<sub>0</sub>+&theta;<sub>1</sub>x &rarr; &theta;<sup>(1)</sup> &rarr; J<sub>test</sub>(&theta;<sup>(1)</sup>)
+        
+        d = 2, h<sub>&theta;</sub>(x) = &theta;<sub>0</sub>+&theta;<sub>1</sub>x+&theta;<sub>2</sub>x<sup>2</sup> &rarr; &theta;<sup>(2)</sup> &rarr; J<sub>test</sub>(&theta;<sup>(2)</sup>)
+        
         .
+        
         .
+        
         .
-        d = 10, h<sub>&theta;</sub>(x) = &theta;<sub>0</sub>+&theta;<sub>1</sub>x+...+&theta;<sub>10</sub>x<sup>10</sup> &rarr; &theta;<sup>10</sup> &rarr; J<sub>test</sub>(&theta;<sup>(10)</sup>)
+        
+        d = 10, h<sub>&theta;</sub>(x) = &theta;<sub>0</sub>+&theta;<sub>1</sub>x+...+&theta;<sub>10</sub>x<sup>10</sup> &rarr; &theta;<sup>(10)</sup> &rarr; J<sub>test</sub>(&theta;<sup>(10)</sup>)
 
         And choose J<sub>test</sub>(&theta;<sup>(5)</sup>)
 
@@ -36,11 +41,11 @@
         * Pick model from cross-validation step and calculate test error
 
     * Bias vs. Variance
+    
+        ![BiasVsVariance](../images/BiasVsVariance.jpg)     
         
         * High bias: underfitting, J<sub>test</sub>(&theta;) &aymp; J<sub>train</sub>(&theta;)
         * High variance: overfitting, J<sub>train</sub>(&theta;) will be low and J<sub>cv</sub>(&theta;) >> J<sub>train</sub>(&theta;)
-
-        ![BiasVsVariance](../images/BiasVsVariance.jpg)
 
     * Regularization and Bias/Variance: Bias/Variance as a function of regularization parameter &lambda;
 
@@ -56,7 +61,7 @@
             
             ![LearningCurveBias](../images/LearningCurveBias.jpg)
 
-        * High variance:
+        * High variance: training error is much lower than cross-validation error
 
             **If a learning algorithm is suffering from high variance, get more data is likely to help**
 
