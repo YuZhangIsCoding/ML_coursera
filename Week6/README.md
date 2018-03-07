@@ -3,7 +3,9 @@
 
     Supervised learning
     
-    x = features of email, e.g. deal, buy, discount, now, etc. In practice, take most frequently occuring n words (10,000 t0 50,000) in training set.
+    x = features of email, e.g. deal, buy, discount, now, etc. 
+    
+    In practice, take most frequently occuring n words (10,000 t0 50,000) in training set.
 
     y = spam (1) or not spam (0)
 
@@ -18,7 +20,7 @@
         * Error analysis: manually examine the examples that your algorithm made errors on. See if any systemetic trend of errors made.
     * Importance of numerical evaluation
         
-        Should discount/discounts/discounted/discounting be taken as the same word? (Can be implemented by stemming softer, e.g. [porter stemmer](https://tartarus.org/martin/PorterStemmer/).
+        Should discount/discounts/discounted/discounting be taken as the same word? (Can be implemented by stemming softer, e.g. [porter stemmer](https://tartarus.org/martin/PorterStemmer/)).
 
         Error analysis may not be helpful for deciding if this is likely to improve performance. Only solution is to try it and see if it works.
 
@@ -51,19 +53,18 @@
         ![TradeOffPrecisionRecall](../images/TradeOffPrecsionRecall.png)
 
     * F<sub>1</sub> Score (F score)
-
-        <img src="http://latex.codecogs.com/gif.latex?F_1Sore=2\frac{P\cdot{R}}{P+R}"/>
         
+        <img src="https://latex.codecogs.com/svg.latex?F_1Sore=2\frac{P\cdot{R}}{P+R}"/>
+    
         How to compare precision/recall numbers?
-
+        
         Algorithms|Precision|Recall|Average|F<sub>1</sub> Score
-        -|-|-|-
+        -|-|-|-|-
         Algo1|0.5|0.4|0.45|0.444
         Algo2|0.7|0.1|0.4|0.175
         Algo3|0.02|1.0|0.51|0.0392
 
-        * Average is not good because it fails to exclude the cases when precison or recall is extremely low.
-
+        * Average is not good because it fails to exclude the cases when precison or recall is extremely low.        
     * Data for Machine Learning
         
         When designing a high accuracy learning system, sometime there are a lot of algorithms we can choose from.
@@ -73,21 +74,29 @@
         {to, too, two}, {then, than}, etc. For breakfast, I ate ____ eggs.
 
         For this problem we could have following choices:
-            * [Perceptron](https://en.wikipedia.org/wiki/Perceptron)
-            * [Winnow](https://en.wikipedia.org/wiki/Winnow_(algorithm))
-            * [Memory-based](https://en.wikipedia.org/wiki/Instance-based_learning)
-            * [Naive Bayes](https://en.wikipedia.org/wiki/Naive_Bayes_classifier)
+        
+         * [Perceptron](https://en.wikipedia.org/wiki/Perceptron)
+         * [Winnow](https://en.wikipedia.org/wiki/Winnow_(algorithm))
+         * [Memory-based](https://en.wikipedia.org/wiki/Instance-based_learning)
+         * [Naive Bayes](https://en.wikipedia.org/wiki/Naive_Bayes_classifier)
+         
+        When applying these algorithms to a large data set, the actual performance is similar.
+        
+        > "It's not who has the best algorithm that wins. 
+        >
+        > It's who has the most data."
 
     * Large Date Rationale
         
         Assume feature X &isin; R<sup>n+1</sup> has sufficient info to predict y accuracy
             
-            Example: I ate (two) eggs.
+          Example: I ate (two) eggs.
 
-            Counter example: Predicting housing price form only size and no other features
+          Counter example: Predicting housing price form only size and no other features
 
-            Useful test: Given the input x, can human expert confidently predict y?
+          Useful test: Given the input x, can human expert confidently predict y?
         
         Combine the strategies below will yield a small cost function J<sub>test</sub>(&theta;)
-            1. Use a learning algorithm with many parameter (logisti/linear regression with many feature; neural network with many hidden layers), which gives low bias &rarr; J<sub>train</sub>(&theta;) will be small
-            2. Use large training set, which makes it unlikely to overfit &rarr; J<sub>train</sub>(&theta;) &asymp; J<sub>test</sub>(&theta;)
+        
+         1. Use a learning algorithm with many parameter (logisti/linear regression with many feature; neural network with many hidden layers), which gives low bias &rarr; J<sub>train</sub>(&theta;) will be small
+         2. Use large training set, which makes it unlikely to overfit &rarr; J<sub>train</sub>(&theta;) &asymp; J<sub>test</sub>(&theta;)
