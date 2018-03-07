@@ -44,7 +44,7 @@
     
         ![BiasVsVariance](../images/BiasVsVariance.jpg)     
         
-        * High bias: underfitting, J<sub>test</sub>(&theta;) &aymp; J<sub>train</sub>(&theta;)
+        * High bias: underfitting, J<sub>test</sub>(&theta;) &asymp; J<sub>train</sub>(&theta;)
         * High variance: overfitting, J<sub>train</sub>(&theta;) will be low and J<sub>cv</sub>(&theta;) >> J<sub>train</sub>(&theta;)
 
     * Regularization and Bias/Variance: Bias/Variance as a function of regularization parameter &lambda;
