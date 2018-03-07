@@ -64,7 +64,7 @@
         Algo2|0.7|0.1|0.4|0.175
         Algo3|0.02|1.0|0.51|0.0392
 
-        * Average is not good because it fails to exclude the cases when precison or recall is extremely low.        
+        * Average is not good because it fails to exclude the cases when precision or recall is extremely low.        
     * Data for Machine Learning
         
         When designing a high accuracy learning system, sometime there are a lot of algorithms we can choose from.
@@ -88,7 +88,7 @@
 
     * Large Date Rationale
         
-        Assume feature X &isin; R<sup>n+1</sup> has sufficient info to predict y accuracy
+        Assume feature x &isin; R<sup>n+1</sup> has sufficient info to predict y accuracy
             
           Example: I ate (two) eggs.
 
