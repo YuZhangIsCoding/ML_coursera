@@ -32,7 +32,7 @@
 
         Thus, whenever y<sup>(i)</sup> = 1, the first term in the cost function equals C&times;(1&times;0+0&times;Cost<sub>0</sub>) = 0
 
-        And if y<sup>(i)</sup> = 0, we also have C&times;(0&times;Cost<sub>1</sub>+1&times0) = 0
+        And if y<sup>(i)</sup> = 0, we also have C&times;(0&times;Cost<sub>1</sub>+1&times;0) = 0
 
         Then our objective function is to 
 

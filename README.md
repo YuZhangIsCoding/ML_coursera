@@ -242,3 +242,105 @@ h<sub>&theta;</sub>(x) = &theta;<sub>0</sub>+&theta;<sub>1</sub>x<sub>1</sub>+&t
         
          1. Use a learning algorithm with many parameter (logisti/linear regression with many feature; neural network with many hidden layers), which gives low bias &rarr; J<sub>train</sub>(&theta;) will be small
          2. Use large training set, which makes it unlikely to overfit &rarr; J<sub>train</sub>(&theta;) &asymp; J<sub>test</sub>(&theta;)
+## [Week 7](https://github.com/YuZhangIsCoding/ML_coursera/blob/master/Week7/README.md)
+1. Support Vector Machine (Large Margin Classifier)
+        We can build cost function as following:
+
+        <img src="https://latex.codecogs.com/svg.latex?J(\theta)=C\sum_{i=1}^{m}\big(y^{(i)}Cost_1(\theta^Tx^{(i)})+(1-y^{(i)})Cost_0(\theta^Tx^{(i)})+\frac{1}{2}\sum_{j=1}^{n}\theta_j^2"/>
+
+        Where C acts like <sup>1</sup>&frasl;<sub>&lambda;</sub> in the logistic regression, and Cost<sub>1</sub>(z) and Cost<sub>0</sub>(z) look like below:
+
+        ![SVM_cost](images/SVM_cost.jpg)
+
+        And the hypothesis is:
+
+        *h<sub>&theta;</sub>(x) = 1, if &theta;<sup>T</sup>x &ge; 0*
+        
+        *h<sub>&theta;</sub>(x) = 0, otherwise*
+
+    * Large Margin Intuition
+
+        **minimize 1/2&sum;&theta;<sub>j</sub><sup>2</sup>**
+
+        such that
+
+        **&theta;<sup>T</sup>x<sup>(i)</sup> &ge; 1, if y<sup>(i)</sup> = 1**
+
+        **&theta;<sup>T</sup>x<sup>(i)</sup> &le; -1, if y<sup>(i)</sup> = 0**
+
+    * SVM decision boundary
+        * Linearly separable case
+            
+            ![SVM_linear_separable](images/SVM_linear_Sep.jpg)
+
+            Mathematically SVM select model with large margins
+
+        * In presence of outliers
+
+            ![SVM_outliers](images/SVM_outliers.jpg)
+
+    * The math behind SVM
+
+        * Vector inner product
+
+            ![InnerProduct](images/InnerProd.jpg)
+
+            Thus u<sup>T</sup>&sdot;v = u<sub>1</sub>v<sub>1</sub>+u<sub>2</sub>v<sub>2</sub> = p&sdot;||u||
+
+        * SVM decision boundary
+
+            minimize 1/2&sum;&theta;<sub>j</sub><sup>2</sup> = 1/2(&theta;<sub>1</sub><sup>2</sup>+&theta;<sub>2</sub><sup>2</sup>) = 1/2||&theta;||<sup>2</sup>
+
+            And larger margin can decrease ||&theta;||
+
+            ![SVM_SmallerMargin](images/SVM_SmallerMargin.jpg)
+            ![SVM_LargerMargin](images/SVM_LargerMargin.jpg)
+
+2. Kernels
+    * Kernel: f<sub>i</sub> = Similarity(x, l<sup>(i)</sup>), i = 1, ..., m
+   
+        ![Landmarks](images/Landmarks.jpg)
+        
+    * Gaussian Kernal (RBF kernel): If x &asymp; l<sup>(i)</sup>, f &asymp; 1; if x is far from l<sup>(i)</sup>, f &asymp; 0
+   
+        <img src="https://latex.codecogs.com/svg.latex?f_i=similarity(x,l^{(i)})=\textrm{exp}(-\frac{||x-l^{(i)}||}{2\sigma^2})"/>
+        
+        ![Gaussian_Sigma](images/Gaussian_Sigma.png)
+      
+    * Choose landmarks: 
+        
+        Given (x<sup>(1)</sup>, y<sup>(1)</sup>), ..., (x<sup>(m)</sup>, y<sup>(m)</sup>), 
+        
+        Choose l<sup>(1)</sup> = x<sup>(1)</sup>, ..., l<sup>(m)</sup> = x<sup>(m)</sup>
+        
+        Compute f<sub>i</sub><sup>(j)</sup> = Similarity(x<sup>(j)</sup>, l<sup>(i)</sup>) = 1, where i, j = 1, ..., m
+      
+    * SVM parameters
+   
+        * C (<sup>1</sup>&frasl;<sub>&lambda;</sub>)
+           
+           Large C: lower bias, high variance
+           
+           Small C: higher bias, low variance
+        * &sigma;<sup>2</sup>
+           
+           Large &sigma;<sup>2</sup>: features f vary more smoothly &rarr; higher bias, low variance
+           
+           Small &sigma;<sup>2</sup>: features f vary less smoothly &rarr; lower bias, high variance
+   
+    * Choices of kernel
+      
+        * No kernel ("linear kernel"): n is large and m is small
+      
+        * Gaussian kernel: n is small and/or m is large; need to choose appropriate  &sigma;<sup>2</sup>; feature scaling before using Gaussian kernel**
+      
+        * Other choices: [Polynomial kernel](https://en.wikipedia.org/wiki/Polynomial_kernel); [String kernel](https://en.wikipedia.org/wiki/String_kernel); [chi-square kernel](https://en.wikipedia.org/wiki/Chi-squared_distribution); [histogram intersection kernel](http://ieeexplore.ieee.org/document/1247294/)
+    * Multiclass Classification: Builtin or one-vs-all
+    * Logistic Regression vs. SVM
+
+        * If n is large: logistic regression or SVM without a kernel
+        * If n is small, m is intermediate: SVM with Gaussian Kernel
+        * If n is small, m is large: Create/add more features, then use logistic regression or SVM without a kernel
+
+        Neural Network likely to work well for most of these settings, but maybe slow to train.
+   
