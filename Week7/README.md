@@ -132,7 +132,7 @@
       
       And &sigma; determines the shape of gaussian kernel
       
-      ![Gaussian_Sigma](../images/Gaussian_Sigma.pdf)
+      ![Gaussian_Sigma](../images/Gaussian_Sigma.png)
       
    * Example
    
