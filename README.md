@@ -244,6 +244,7 @@ h<sub>&theta;</sub>(x) = &theta;<sub>0</sub>+&theta;<sub>1</sub>x<sub>1</sub>+&t
          2. Use large training set, which makes it unlikely to overfit &rarr; J<sub>train</sub>(&theta;) &asymp; J<sub>test</sub>(&theta;)
 ## [Week 7](https://github.com/YuZhangIsCoding/ML_coursera/blob/master/Week7/README.md)
 1. Support Vector Machine (Large Margin Classifier)
+    * Alternative view of logistic regression
         We can build cost function as following:
 
         <img src="https://latex.codecogs.com/svg.latex?J(\theta)=C\sum_{i=1}^{m}\big(y^{(i)}Cost_1(\theta^Tx^{(i)})+(1-y^{(i)})Cost_0(\theta^Tx^{(i)})+\frac{1}{2}\sum_{j=1}^{n}\theta_j^2"/>
@@ -287,9 +288,9 @@ h<sub>&theta;</sub>(x) = &theta;<sub>0</sub>+&theta;<sub>1</sub>x<sub>1</sub>+&t
 
             Thus u<sup>T</sup>&sdot;v = u<sub>1</sub>v<sub>1</sub>+u<sub>2</sub>v<sub>2</sub> = p&sdot;||u||
 
-        * SVM decision boundary
+        * SVM decision boundary: p<sup>(i)</sup>&sdot;||&theta;|| &ge; 1 or p<sup>(i)</sup>&sdot;||&theta;|| &le; -1
 
-            minimize 1/2&sum;&theta;<sub>j</sub><sup>2</sup> = 1/2(&theta;<sub>1</sub><sup>2</sup>+&theta;<sub>2</sub><sup>2</sup>) = 1/2||&theta;||<sup>2</sup>
+            minimize 1/2&sum;&theta;<sub>j</sub><sup>2</sup> = 1/2||&theta;||<sup>2</sup>
 
             And larger margin can decrease ||&theta;||
 
@@ -313,7 +314,7 @@ h<sub>&theta;</sub>(x) = &theta;<sub>0</sub>+&theta;<sub>1</sub>x<sub>1</sub>+&t
         
         Choose l<sup>(1)</sup> = x<sup>(1)</sup>, ..., l<sup>(m)</sup> = x<sup>(m)</sup>
         
-        Compute f<sub>i</sub><sup>(j)</sup> = Similarity(x<sup>(j)</sup>, l<sup>(i)</sup>) = 1, where i, j = 1, ..., m
+        Compute f<sub>i</sub><sup>(j)</sup> = Similarity(x<sup>(j)</sup>, l<sup>(i)</sup>), where i, j = 1, ..., m
       
     * SVM parameters
    
@@ -332,7 +333,7 @@ h<sub>&theta;</sub>(x) = &theta;<sub>0</sub>+&theta;<sub>1</sub>x<sub>1</sub>+&t
       
         * No kernel ("linear kernel"): n is large and m is small
       
-        * Gaussian kernel: n is small and/or m is large; need to choose appropriate  &sigma;<sup>2</sup>; feature scaling before using Gaussian kernel**
+        * Gaussian kernel: n is small and/or m is large; need to choose appropriate  &sigma;<sup>2</sup>; feature scaling before using Gaussian kernel
       
         * Other choices: [Polynomial kernel](https://en.wikipedia.org/wiki/Polynomial_kernel); [String kernel](https://en.wikipedia.org/wiki/String_kernel); [chi-square kernel](https://en.wikipedia.org/wiki/Chi-squared_distribution); [histogram intersection kernel](http://ieeexplore.ieee.org/document/1247294/)
     * Multiclass Classification: Builtin or one-vs-all
