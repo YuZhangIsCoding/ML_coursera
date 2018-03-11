@@ -154,7 +154,7 @@
         
         Given training/testing example x<sup>(i)</sup>
         
-        f<sub>1</sub><sup>(i)</sup> = Similarity(x<sup>(1)</sup>, l<sup>(i)</sup>) = 1
+        f<sub>1</sub><sup>(i)</sup> = Similarity(x<sup>(i)</sup>, l<sup>(1)</sup>)
         
         ...
         
@@ -170,7 +170,7 @@
       
     * SVM parameters
    
-        * C (<sup>1</sup>&frasl;<sub>&lambda;)
+        * C (<sup>1</sup>&frasl;<sub>&lambda;</sub>)
            
            Large C: lower bias, high variance
            
