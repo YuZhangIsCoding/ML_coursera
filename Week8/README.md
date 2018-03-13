@@ -2,7 +2,7 @@
 1. Clustering
     * Unsupervised learning
 
-        * Applications: market segmentation, social network analysis, organize computer cluster, astronomical data analysis
+        * Applications: *market segmentation*, *social network analysis*, *organize computer cluster*, *astronomical data analysis*
 
         ![UnsupervisedLearning](../images/UnsupervisedLearning.jpg)
 
@@ -10,7 +10,7 @@
         
         ![Kmeans](../images/Kmeans.jpg)
 
-        Input: K (number of clusters), Training set {x<sup>(1)</sup>, ..., x<sup>(m)</sup>}, where x<sup>(i)</sup> &isin; R<sup>n</sup>(drop x<sub<0</sub> = 1 as convention)
+        Input: K (number of clusters), Training set {x<sup>(1)</sup>, ..., x<sup>(m)</sup>}, where x<sup>(i)</sup> &isin; R<sup>n</sup>(drop x<sub>0</sub> = 1 as convention)
 
         **Randomly initialize K cluster centroids &mu;<sub>1</sub>, ..., &mu;<sub>K</sub>**
 
@@ -27,11 +27,11 @@
         **}**
 
 
-        * Note: if no sample assigned to a centroid, we can 
+        * *Note: if no sample assigned to a centroid, we can*
 
-            1. Delete that centroid, and decrease the number of centroids to K-1 (more common).
+            1. *Delete that centroid, and decrease the number of centroids to K-1 (more common).*
     
-            2. Randomly reinitialize the centroid if need K clusters.
+            2. *Randomly reinitialize the centroid if need K clusters.*
 
 
     * K-means for non-separated clusters
@@ -57,17 +57,17 @@
        
         Randomly pick K (K < m) traning examples and set &mu;<sub>1</sub>, ..., &mu;<sub>K</sub> to these K examples. 
 
-    * Local optima: try initialize several different times
+    * Local optima: try initializing several different times
 
         ![Kmeans_LocalOpt](../images/Kmeans_LocalOpt.jpg)
         
         for i = 1 to test_numbers (50-1000 is reasonable){
 
-        Randomly initialize K centroids
+        &nbsp;&nbsp;&nbsp;&nbsp;*Randomly initialize K centroids*
 
-        Run k-means, get C<sup>(1)</sup>, ..., C<sup>(m)</sup>, &mu;<sub>1</sub>, ..., &mu;<sub>K</sub>
+        &nbsp;&nbsp;&nbsp;&nbsp;*Run k-means, get C<sup>(1)</sup>, ..., C<sup>(m)</sup>, &mu;<sub>1</sub>, ..., &mu;<sub>K</sub>*
 
-        Compute cost function J(...)
+        &nbsp;&nbsp;&nbsp;&nbsp;*Compute cost function J(...)*
 
         }
 
