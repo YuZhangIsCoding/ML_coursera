@@ -345,3 +345,101 @@ h<sub>&theta;</sub>(x) = &theta;<sub>0</sub>+&theta;<sub>1</sub>x<sub>1</sub>+&t
 
         Neural Network likely to work well for most of these settings, but maybe slow to train.
    
+## [Week 8](https://github.com/YuZhangIsCoding/ML_coursera/blob/master/Week8/README.md)
+1. Clustering
+    * Unsupervised learning
+
+        ![UnsupervisedLearning](../images/UnsupervisedLearning.jpg)
+
+    * Optimization objective
+
+        <img src="https://latex.codecogs.com/svg.latex?J(c^{(1)},...,c^{(m)},\mu_1,...,\mu_K)=\frac{1}{m}\sum_{i=1}^{m}||x^{(i)}-\mu_{c^{(i)}}||^2"/>
+
+    * K-means algorithm
+        
+        ![Kmeans](../images/Kmeans.jpg)
+
+        **Randomly initialize K cluster centroids: Randomly pick K (K < m) traning examples and set &mu;<sub>1</sub>, ..., &mu;<sub>K</sub> to these K examples.
+
+        **Repeat{**
+
+        **for i = 1 to m**
+        
+        &nbsp;&nbsp;&nbsp;&nbsp;**C<sup>(i)</sup> = index (from 1 to K) of cluster cnetroid closest to x<sup>(i)</sup>** &larr; *Cluster assignment step* &rarr; minimize J(...) with respect to C<sup>(1)</sup>, ..., C<sup>(m)</sup>, while holding &mu;<sub>1</sub>, ..., &mu;<sub>K</sub> fixed
+
+        **for k = 1 to K**
+
+        &nbsp;&nbsp;&nbsp;&nbsp;**&mu;<sub>k</sub> = average of points assigned to cluster k** &larr; *Move centroid step* &rarr; minimize J(...) with respect to &mu;<sub>1</sub>, ..., &mu;<sub>K</sub>
+
+        **}**
+
+
+        * *Note: if no sample assigned to a centroid, we can*
+
+            1. *Delete that centroid, and decrease the number of centroids to K-1 (more common).*
+    
+            2. *Randomly reinitialize the centroid if need K clusters.*
+
+    * Local optima: try initializing several different times and **pick clustering that gives lowest cost function J(...)**
+
+        * K = 2-10, random initialization works pretty well
+
+        * K >> 10, just slight improve after random initialization
+
+    * Choosing the number of clusters: 
+
+        * Mainly by hand, human judgement
+            
+        * Elbow method: plot cost function vs. K
+
+            ![Elbow_method](../images/Elbow_Method.jpg)
+
+            "Worth a shot, but won't have a high expectation", because many times, there are no clear elbow.
+
+        * Later/downstream purpose
+
+2. Dimensionality Reduction: Principal Component Analysis (PCA)
+    * Motivation
+        * Data compression: reduce data from 2D to 1D if datas fall near a line, or reduce data from 3D to 2D if data falls near a plane, etc.
+            ![DataCompression](../images/DataCompression.jpg)
+
+        * Data visualization: simplify the features to 2 or 3 most comprehensive and important features
+    * PCA problem formulation: Reduce from n-dimension to K-dimension:
+
+        Find K vectors u<sup>(1)</sup>, ..., u<sup>(K)</sup> onto which to project the data, so as to minimize the projection error.
+
+    * PCA is not linear regression: **Linear regression minimizes vetical distances, while PCA minimizes orthogonal distances, where data is not labeled and treated equally**
+
+        ![PCAnotLinearReg](../images/PCAnotLinearReg.jpg)
+
+    * PCA algorithm with vectorized implementation
+        
+        **After mean normalization and feature scaling**
+
+        **Compute ["Covariance matrix"](https://en.wikipedia.org/wiki/Covariance_matrix): &sum; = <sup>1</sup>&frasl;<sub>m</sub>&sdot;X<sup>T</sup>&sdot;X**
+
+        **Compute "eigenvectors" of matrix &sum;: [U, S, V] = svd(&sum;)**
+
+        **Select first K eigenvectors as U<sub>reduce</sub>: U<sub>reduce</sub> = U(:, 1:K)**
+
+        **Compute the projection from X to Z: Z = X&sdot;U<sub>reduce</sub>**
+
+    * Reconstruction from compressed representation: **X<sub>approx</sub> = Z&sdot;U<sub>reduce</sub>**
+
+    * Choose the number of pricinple components: choose K to be the smallest value, so that **"99% of variance is retained"**
+
+        &nbsp;&nbsp;&nbsp;&nbsp;<img src="https://latex.codecogs.com/svg.latex?\frac{\frac{1}{m}\sum_{i=1}^{m}||x^{(i)}-x_{approx}^{(i)}||^2}{\frac{1}{m}\sum_{i=1}^{m}||x^{(i)}||^2}\le0.01"/>
+
+    * Choose K algorithm:
+        
+        **Try PCA with K = 1, 2, ...**
+
+        **Compute [U, S, V] = svd(&sum;)**
+
+        **Pick the smallest K that satisfies:**
+            
+        &nbsp;&nbsp;&nbsp;&nbsp;<img src="https://latex.codecogs.com/svg.latex?\frac{\sum_{i=1}^{K}S_{ii}}{\sum_{i=1}^{n}S_{ii}}\ge0.99"/>
+
+    * Application of PCA: *speed up supervised learning*, *reduce memory/disk needed to store data*, *visualization with K = 2 or 3*
+        
+    * Bad use of PCA: overfitting, blindly use PCA without testing raw data

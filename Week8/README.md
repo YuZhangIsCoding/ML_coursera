@@ -122,7 +122,7 @@
 
     * PCA is not linear regression
 
-        **Linear regression minimizes vetical distances, while PCA minimizes orthogonal distances, where data is not labled and treated equally**
+        **Linear regression minimizes vetical distances, while PCA minimizes orthogonal distances, where data is not labeled and treated equally**
 
         ![PCAnotLinearReg](../images/PCAnotLinearReg.jpg)
 
@@ -140,7 +140,7 @@
             
         &nbsp;&nbsp;&nbsp;&nbsp;[U, S, V] = svd(&sum;)
 
-        *Select first eigenvectors as U<sub>reduce</sub> = U(:, 1:K), and compute the project of x to z by inner product: z = (U<sub>reduce</sub>)<sup>T</sup>&sdot;x, where z &isin; R<sup>K<sup>*
+        *Select first eigenvectors as U<sub>reduce</sub> = U(:, 1:K), and compute the projection of x to z by inner product: z = (U<sub>reduce</sub>)<sup>T</sup>&sdot;x, where z &isin; R<sup>K<sup>*
 
     * Vectorized implementation and summary
         
