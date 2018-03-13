@@ -140,7 +140,8 @@
             
         &nbsp;&nbsp;&nbsp;&nbsp;[U, S, V] = svd(&sum;)
 
-        *Select first eigenvectors as U<sub>reduce</sub> = U(:, 1:K), and compute the projection of x to z by inner product: z = (U<sub>reduce</sub>)<sup>T</sup>&sdot;x, where z &isin; R<sup>K<sup>*
+        *Select first eigenvectors as U<sub>reduce</sub> = U(:, 1:K), and compute the projection of x to z by inner product:
+        &nbsp;&nbsp;&nbsp;&nbsp;z = (U<sub>reduce</sub>)<sup>T</sup>&sdot;x, where z &isin; R<sup>K<sup>*
 
     * Vectorized implementation and summary
         
