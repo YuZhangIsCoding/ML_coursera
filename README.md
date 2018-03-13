@@ -349,7 +349,7 @@ h<sub>&theta;</sub>(x) = &theta;<sub>0</sub>+&theta;<sub>1</sub>x<sub>1</sub>+&t
 1. Clustering
     * Unsupervised learning
 
-        ![UnsupervisedLearning](../images/UnsupervisedLearning.jpg)
+        ![UnsupervisedLearning](images/UnsupervisedLearning.jpg)
 
     * Optimization objective
 
@@ -357,7 +357,7 @@ h<sub>&theta;</sub>(x) = &theta;<sub>0</sub>+&theta;<sub>1</sub>x<sub>1</sub>+&t
 
     * K-means algorithm
         
-        ![Kmeans](../images/Kmeans.jpg)
+        ![Kmeans](images/Kmeans.jpg)
 
         **Randomly initialize K cluster centroids: Randomly pick K (K < m) traning examples and set &mu;<sub>1</sub>, ..., &mu;<sub>K</sub> to these K examples.
 
@@ -392,7 +392,7 @@ h<sub>&theta;</sub>(x) = &theta;<sub>0</sub>+&theta;<sub>1</sub>x<sub>1</sub>+&t
             
         * Elbow method: plot cost function vs. K
 
-            ![Elbow_method](../images/Elbow_Method.jpg)
+            ![Elbow_method](images/Elbow_Method.jpg)
 
             "Worth a shot, but won't have a high expectation", because many times, there are no clear elbow.
 
@@ -401,7 +401,7 @@ h<sub>&theta;</sub>(x) = &theta;<sub>0</sub>+&theta;<sub>1</sub>x<sub>1</sub>+&t
 2. Dimensionality Reduction: Principal Component Analysis (PCA)
     * Motivation
         * Data compression: reduce data from 2D to 1D if datas fall near a line, or reduce data from 3D to 2D if data falls near a plane, etc.
-            ![DataCompression](../images/DataCompression.jpg)
+            ![DataCompression](images/DataCompression.jpg)
 
         * Data visualization: simplify the features to 2 or 3 most comprehensive and important features
     * PCA problem formulation: Reduce from n-dimension to K-dimension:
@@ -410,7 +410,7 @@ h<sub>&theta;</sub>(x) = &theta;<sub>0</sub>+&theta;<sub>1</sub>x<sub>1</sub>+&t
 
     * PCA is not linear regression: **Linear regression minimizes vetical distances, while PCA minimizes orthogonal distances, where data is not labeled and treated equally**
 
-        ![PCAnotLinearReg](../images/PCAnotLinearReg.jpg)
+        ![PCAnotLinearReg](images/PCAnotLinearReg.jpg)
 
     * PCA algorithm with vectorized implementation
         
