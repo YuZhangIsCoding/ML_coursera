@@ -2,9 +2,9 @@
 1. Clustering
     * Unsupervised learning
 
-        ![UnsupervisedLearning](../images/UnsupervisedLearning.jpg)
-
         * Applications: market segmentation, social network analysis, organize computer cluster, astronomical data analysis
+
+        ![UnsupervisedLearning](../images/UnsupervisedLearning.jpg)
 
     * K-means algorithm
         
@@ -12,22 +12,22 @@
 
         Input: K (number of clusters), Training set {x<sup>(1)</sup>, ..., x<sup>(m)</sup>}, where x<sup>(i)</sup> &isin; R<sup>n</sup>(drop x<sub<0</sub> = 1 as convention)
 
-        **Randomly initialize K cluster centroids &mu;<sub>1</sub>, ..., &mu;<sub>K</sub>
+        **Randomly initialize K cluster centroids &mu;<sub>1</sub>, ..., &mu;<sub>K</sub>**
 
         **Repeat{**
 
         **for i = 1 to m**
         
-        &nbsp;&nbsp;**C<sup>(i)</sup> = index (from 1 to K) of cluster cnetroid closest to x<sup>(i)</sup>** &larr; Cluster assignment step
+        &nbsp;&nbsp;&nbsp;&nbsp;**C<sup>(i)</sup> = index (from 1 to K) of cluster cnetroid closest to x<sup>(i)</sup>** &larr; *Cluster assignment step*
 
         **for k = 1 to K**
 
-        &nbsp;&nbsp;**&mu;<sub>k</sub> = average of points assigned to cluster k** &larr; Move centroid step
+        &nbsp;&nbsp;&nbsp;&nbsp;**&mu;<sub>k</sub> = average of points assigned to cluster k** &larr; *Move centroid step*
 
         **}**
 
 
-        *Note: if no sample assigned to a centroid, we can 
+        * Note: if no sample assigned to a centroid, we can 
 
             1. Delete that centroid, and decrease the number of centroids to K-1 (more common).
     
@@ -46,7 +46,7 @@
 
         Define our distortion cost function as :
 
-        <img src="https://latex.codecogs.com/svg.latex?J(c^{(1)},...,c^{(m),\mu_1,...,\mu_K)=\frac{1}{m}\sum_{i=1}^{m}||x^{(i)}-\mu_{c^{(i)}}||"/>
+        <img src="https://latex.codecogs.com/svg.latex?J(c^{(1)},...,c^{(m)},\mu_1,...,\mu_K)=\frac{1}{m}\sum_{i=1}^{m}||x^{(i)}-\mu_{c^{(i)}}||^2"/>
 
     * Revisit the algorithm
         
@@ -71,11 +71,11 @@
 
         }
 
-        Pick clustering that gives lowest cost function J(...)
+        **Pick clustering that gives lowest cost function J(...)**
 
-            * K = 2-10, random initialization works pretty well
+        * K = 2-10, random initialization works pretty well
 
-            * K >> 10, just slight improve after random initialization
+        * K >> 10, just slight improve after random initialization
 
     * Choosing the number of clusters: 
 
@@ -85,13 +85,13 @@
 
         * Elbow method: plot cost function vs. K
 
-            ![Elbow_method](../images/Elbow_method.jpg)
+            ![Elbow_method](../images/Elbow_Method.jpg)
 
             "Worth a shot, but won't have a high expectation", because many times, there are no clear elbow.
 
         * Later/downstream purpose
 
-            e.g. T-shirt sizing: K = 3 &rarr S, M, L; K = 5 &rarr; XS, S, M, L, XL
+            e.g. T-shirt sizing: K = 3 &rarr; S, M, L; K = 5 &rarr; XS, S, M, L, XL
 
 2. Dimensionality Reduction
     * Motivation
@@ -128,63 +128,63 @@
 
     * PCA algorithm
 
-        **Preprocessing, feature scaling**
+        *Preprocessing, feature scaling*
         
         Reduce data from n-d to K-d
 
-        Compute ["Covariance matrix"](https://en.wikipedia.org/wiki/Covariance_matrix), which is a way to represent the linear relationship between variables:
+        *Compute ["Covariance matrix"](https://en.wikipedia.org/wiki/Covariance_matrix), which is a way to represent the linear relationship between variables:**
         
-            <img src="https://latex.codecogs.com/svg.latex?\sum=\frac{i=1}{n}x^{(i)}(x^{(i)})^T"/>
+        &nbsp;&nbsp;&nbsp;&nbsp;<img src="https://latex.codecogs.com/svg.latex?\sum=\frac{i=1}{n}x^{(i)}(x^{(i)})^T"/>
 
-        Compute "eigenvectors" of matrix &sum; using [Singular-value decomposition](https://en.wikipedia.org/wiki/Singular-value_decomposition)
+        *Compute "eigenvectors" of matrix &sum; using [Singular-value decomposition](https://en.wikipedia.org/wiki/Singular-value_decomposition)*
             
-            [U, S, V] = svd(&sum;)
+        &nbsp;&nbsp;&nbsp;&nbsp;[U, S, V] = svd(&sum;)
 
-        Select first eigenvectors as U<sub>reduce</sub> = U(:, 1:K), and compute the project of x to z by inner product: z = (U<sub>reduce</sub>)<sup>T</sup>&sdot;x, where z &isin; R<sup>K<sup>
+        *Select first eigenvectors as U<sub>reduce</sub> = U(:, 1:K), and compute the project of x to z by inner product: z = (U<sub>reduce</sub>)<sup>T</sup>&sdot;x, where z &isin; R<sup>K<sup>*
 
     * Vectorized implementation and summary
         
-        After mean normalization and feature scaling
+        **After mean normalization and feature scaling**
 
-        &sum; = <sup>1</sup>&frasl;<sub>m</sub>&sdot;X<sup>T<sup>&sdot;X
+        **&sum; = <sup>1</sup>&frasl;<sub>m</sub>&sdot;X<sup>T</sup>&sdot;X**
 
-        [U, S, V] = svd(&sum;)
+        **[U, S, V] = svd(&sum;)**
 
-        U<sub>reduce</sub> = U(:, 1:K)
+        **U<sub>reduce</sub> = U(:, 1:K)**
 
-        Z = X&sdot;U<sub>reduce</sub>
+        **Z = X&sdot;U<sub>reduce</sub>**
 
     * Reconstruction from compressed representation
 
         x<sub>approx</sub> = U<sub>reduce</sub>&sdot;z 
 
-        Vectorized: X<sub>approx</sub> = Z&sdot;U<sub>reduce</sub>
+        Vectorized: **X<sub>approx</sub> = Z&sdot;U<sub>reduce</sub>**
 
     * Choose the number of pricinple components
 
         Average squared projection error:
 
-            <img src="https://latex.codecogs.com/svg.latex?\frac{1}{m}\sum_{i=1}{m}||x^{(i)}-x_{approx}^(i)||^2"/>
+        &nbsp;&nbsp;&nbsp;&nbsp;<img src="https://latex.codecogs.com/svg.latex?\frac{1}{m}\sum_{i=1}^{m}||x^{(i)}-x_{approx}^{(i)}||^2"/>
 
         Total variation in the data:
     
-            <img src="https://latex.codecogs.com/svg.latex?\frac{1}{m}\sum_{i=1}{m}||x_{approx}^(i)||^2"/>
+        &nbsp;&nbsp;&nbsp;&nbsp;<img src="https://latex.codecogs.com/svg.latex?\frac{1}{m}\sum_{i=1}^{m}||x^{(i)}||^2"/>
 
         Typically, choose K to be the smallest value, so that
 
-            <img src="https://latex.codecogs.com/svg.latex?\frac{\frac{1}{m}\sum_{i=1}{m}||x^{(i)}-x_{approx}^(i)||^2}{\frac{1}{m}\sum_{i=1}{m}||x_{approx}^(i)||^2}\le0.01"/>
+        &nbsp;&nbsp;&nbsp;&nbsp;<img src="https://latex.codecogs.com/svg.latex?\frac{\frac{1}{m}\sum_{i=1}^{m}||x^{(i)}-x_{approx}^{(i)}||^2}{\frac{1}{m}\sum_{i=1}^{m}||x^{(i)}||^2}\le0.01"/>
 
-        or "99% of variance is retained"
+        or **"99% of variance is retained"**
 
     * Choose K algorithm:
         
-        Try PCA with K = 1, 2, ...
+        **Try PCA with K = 1, 2, ...**
 
-        Compute [U, S, V] = svd(&sum;)
+        **Compute [U, S, V] = svd(&sum;)**
 
-        Pick the smallest K that satisfies:
+        **Pick the smallest K that satisfies:**
             
-            <img src="https://latex.codecogs.com/svg.latex?\frac{\sum_{i=1}^{K}S_{ii}}{\sum_{i=1}^{n}S_{ii}}\ge0.99"/>
+        &nbsp;&nbsp;&nbsp;&nbsp;<img src="https://latex.codecogs.com/svg.latex?\frac{\sum_{i=1}^{K}S_{ii}}{\sum_{i=1}^{n}S_{ii}}\ge0.99"/>
 
     * Application of PCA:
         
