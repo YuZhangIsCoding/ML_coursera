@@ -359,7 +359,7 @@ h<sub>&theta;</sub>(x) = &theta;<sub>0</sub>+&theta;<sub>1</sub>x<sub>1</sub>+&t
         
         ![Kmeans](images/Kmeans.jpg)
 
-        **Randomly initialize K cluster centroids: Randomly pick K (K < m) traning examples and set &mu;<sub>1</sub>, ..., &mu;<sub>K</sub> to these K examples.
+        **Randomly initialize K cluster centroids: randomly pick K (K < m) traning examples and set &mu;<sub>1</sub>, ..., &mu;<sub>K</sub> to these K examples.**
 
         **Repeat{**
 
@@ -442,4 +442,4 @@ h<sub>&theta;</sub>(x) = &theta;<sub>0</sub>+&theta;<sub>1</sub>x<sub>1</sub>+&t
 
     * Application of PCA: *speed up supervised learning*, *reduce memory/disk needed to store data*, *visualization with K = 2 or 3*
         
-    * Bad use of PCA: overfitting, blindly use PCA without testing raw data
+    * Bad use of PCA: prevent overfitting, blindly use PCA without testing raw data
