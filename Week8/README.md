@@ -134,7 +134,7 @@
 
         *Compute ["Covariance matrix"](https://en.wikipedia.org/wiki/Covariance_matrix), which is a way to represent the linear relationship between variables:**
         
-        &nbsp;&nbsp;&nbsp;&nbsp;<img src="https://latex.codecogs.com/svg.latex?\sum=\frac{i=1}{n}x^{(i)}(x^{(i)})^T"/>
+        &nbsp;&nbsp;&nbsp;&nbsp;<img src="https://latex.codecogs.com/svg.latex?\sum=\sum_{i=1}^{n}x^{(i)}(x^{(i)})^T"/>
 
         *Compute "eigenvectors" of matrix &sum; using [Singular-value decomposition](https://en.wikipedia.org/wiki/Singular-value_decomposition)*
             
