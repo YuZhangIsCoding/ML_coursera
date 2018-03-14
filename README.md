@@ -1,6 +1,17 @@
 # Machine Learning
 
 Today(Feb 20, 2018), I started a classic Coursera course [Machine Learning by Andrew Ng](https://www.coursera.org/learn/machine-learning/home/welcome). I will update weekly about the topics introduced in the lectures and interesting problems I encountered. Here, I will just include a few bullet points from each week. Detailed summaries can be found in each week's README.md file. All diagrams were created from [draw.io](https://www.draw.io/), and all math notations were typed using inline html code or generated from [CodeCogs](http://latex.codecogs.com/).
+
+Topics covered in this course are:
+
+   * [Week 1: Linear Regression with One Variable](https://github.com/YuZhangIsCoding/ML_coursera/blob/master/Week1/)
+   * [Week 2: Linear Regression with Multipule Variables](https://github.com/YuZhangIsCoding/ML_coursera/blob/master/Week2/)
+   * [Week 3: Logistic Regression](https://github.com/YuZhangIsCoding/ML_coursera/blob/master/Week3/)
+   * [Week 4: Neural Networks (Forward propagation)](https://github.com/YuZhangIsCoding/ML_coursera/blob/master/Week4/)
+   * [Week 5: Neural Networks (Backpropagation)](https://github.com/YuZhangIsCoding/ML_coursera/blob/master/Week5/)
+   * [Week 6: Debugging, Bias/Variance, Precision/Recall](https://github.com/YuZhangIsCoding/ML_coursera/blob/master/Week6/)
+   * [Week 7: Support Vector Machine and Kernels](https://github.com/YuZhangIsCoding/ML_coursera/blob/master/Week7/)
+   * [Week 8: K-means Clustering and Principal Component Analysis](https://github.com/YuZhangIsCoding/ML_coursera/blob/master/Week8/)
 ## [Week 1](https://github.com/YuZhangIsCoding/ML_coursera/blob/master/Week1/README.md)
 1. Introduction to Machine Learning
    * Popular ML algorithms
