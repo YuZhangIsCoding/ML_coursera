@@ -8,7 +8,7 @@
 
     * Density estimation
         
-        Given dataset {x<sup>1</sup>, ..., x<sup>1</sup>), is x<sub>test</sub> anomalous?
+        Given dataset {x<sup>(1)</sup>, ..., x<sup>(m)</sup>), is x<sub>test</sub> anomalous?
 
         Model p(x):
 
@@ -38,13 +38,13 @@
 
         * Parameter estimation
 
-            <img src="http://latex.codecogs.com/svg.latex?\mu_j=\frac{1}{m}\sum_{i=1}^{m}x_j^{(i)}"/>
+            <img src="http://latex.codecogs.com/svg.latex?\mu_j=\frac{1}{m}\sum_{i=1}^{m}x_j^{(i)},"/>
 
-            <img src="http://latex.codecogs.com/svg.latex?\sigma^2=\frac{1}{m}\sum_{i=1}^{m}(x_j^{(i)}-\mu_j)^2"/>
+            <img src="http://latex.codecogs.com/svg.latex?\sigma_j^2=\frac{1}{m}\sum_{i=1}^{m}(x_j^{(i)}-\mu_j)^2"/>
         
         * Anomaly detection algorithm
 
-            Choose features x<sub>i</sub> taht you think might be indicative of anomalous examples
+            Choose features x<sub>i</sub> that you think might be indicative of anomalous examples
 
             Fit parameters &mu;<sub>1</sub>, ..., &mu;<sub>n</sub>, &sigma;<sub>1</sub><sup>2</sup>, ..., &sigma;<sub>n</sub><sup>2</sup>
 
@@ -88,13 +88,13 @@
             Manufacturing|Weather prediction
             Monitoring machines in data center|cancer classification
 
-            We may swithc from anomaliy detection to supervised learning when enough examples were given.
+            We may switch from anomaly detection to supervised learning when enough examples were given.
 
     * Features to use
 
         * Non-Gaussian features
 
-            Sometimes the histogram of training set does not look like Gaussian distributed we may try to "correct" it by applying additional functions, such as *log(x+c)*, *x<sup>c</sup>*, ...
+            Sometimes the histogram of training set does not look like Gaussian distributed. Even though the model probablity works fine, but we may try to "correct" it by applying additional functions, such as *log(x+c)*, *x<sup>c</sup>*, ...
 
             ![NonGaussian](../images/NonGaussian.png)
 
@@ -134,13 +134,13 @@
 
     * Parameters
         
-        <img src="http://latex.codecogs.com/svg.latex?\mu_j=\frac{1}{m}\sum_{i=1}^{m}x_j^{(i)}"/>
+        <img src="http://latex.codecogs.com/svg.latex?\mu_j=\frac{1}{m}\sum_{i=1}^{m}x_j^{(i)},"/>
 
-        <img src="http://latex.codecogs.com/svg.latex?]\sum=\frac{1}{m}\sum_{i=1}^{m}(x^{(i))-\mu)(x^{(i)}-\mu)^T=\frac{1}{m}{\cdot}X^T{\cdot}X"/>
+        <img src="http://latex.codecogs.com/svg.latex?\sum=\frac{1}{m}\sum_{i=1}^{m}(x^{(i)}-\mu)(x^{(i)}-\mu)^T=\frac{1}{m}{\cdot}X^T{\cdot}X"/>
 
         The distribution will change with respect to &mu; (location of center) and &sum; (the shape of distribution)
 
-        ![MultiGaussian_Sigma](../images/MultiGaussian_Sigma.png)
+        ![MultiGaussian_Sigma](../images/MultiGaussian_Simga.png)
 
         And p(x) is given by
 
@@ -159,4 +159,6 @@
         Manually create features to capture anomalies when features take unusual combinations|Automatically captures correlations between features
         Computationally cheaper, n can go large (10,000 to 100,000)|Computationally more expensive because of the calculation of the reverse of &sum;
         Ok if m is small|Must have m > n, otherwise &sum; is non-invertible (may also be resulted from redundant features)
+        
+        Andrew's experience suggests when m > 10n, we could try Multivariate Gaussian
         
