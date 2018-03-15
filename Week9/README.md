@@ -223,7 +223,7 @@
 
         **Minimize J(...) using gradient descent (or other methods):**
 
-        &nbsp;&nbsp;&nbsp;&nbsp;<img src="http://latex.codecogs.com/svg.latex?x_k^{(j)}=x_k^{(j)}-\alpha\Big(\sum_{j:r(i,j)=1}\big((\theta^{(j)})^T{\cdot}x^{(i)}-y^{(i,j)}\big)\theta_k^{(j)}+\lambdax_k^{(i)}\Big)"/>
+        &nbsp;&nbsp;&nbsp;&nbsp;<img src="http://latex.codecogs.com/svg.latex?x_k^{(j)}=x_k^{(j)}-\alpha\Big(\sum_{j:r(i,j)=1}\big((\theta^{(j)})^T{\cdot}x^{(i)}-y^{(i,j)}\big)\theta_k^{(j)}+{\lambda}x_k^{(i)}\Big)"/>
 
         &nbsp;&nbsp;&nbsp;&nbsp;<img src="http://latex.codecogs.com/svg.latex?\theta_k^{(j)}=\theta_k^{(j)}-\alpha\Big(\sum_{i:r(i,j)=1}\big((\theta^{(j)})^T{\cdot}x^{(i)}-y^{(i,j)}\big)x_k^{(i)}+\lambda\theta_k^{(j)}\Big)"/>
 
