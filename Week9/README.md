@@ -236,7 +236,7 @@
         &nbsp;&nbsp;&nbsp;&nbsp;<img src="http://latex.codecogs.com/svg.latex?X=\begin{bmatrix}-&(x^{(1)})^T&-\\-&(x^{(2)})^T&-\\\vdots&\vdots&\vdots\\-&(x^{(n_m)})^T&-\end{bmatrix},"/>
         &nbsp;&nbsp;&nbsp;&nbsp;<img src="http://latex.codecogs.com/svg.latex?\Theta=\begin{bmatrix}-&(\theta^{(1)})^T&-\\-&(\theta^{(2)})^T&-\\\vdots&\vdots&\vdots\\-&(\theta^{(n_u)})^T&-\end{bmatrix}"/>
 
-        Predicted rating = X\Theta;<sup>T</sup> &rarr; [Low Rank Matrix](https://en.wikipedia.org/wiki/Low-rank_approximation)
+        Predicted rating = X&Theta;<sup>T</sup> &rarr; [Low Rank Matrix](https://en.wikipedia.org/wiki/Low-rank_approximation)
 
     * Finding related movies
 
