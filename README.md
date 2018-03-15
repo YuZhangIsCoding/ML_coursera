@@ -553,10 +553,11 @@ h<sub>&theta;</sub>(x) = &theta;<sub>0</sub>+&theta;<sub>1</sub>x<sub>1</sub>+&t
 
         For a user with parameter &theta and a movie with feature x, pridict rating by &theta;<sup>T</sup>x
 
-    * [Low Rank Matrix Factorization](https://en.wikipedia.org/wiki/Low-rank_approximation): Predicted rating = X\Theta;<sup>T</sup>
+    * [Low Rank Matrix Factorization](https://en.wikipedia.org/wiki/Low-rank_approximation): Predicted rating = X&Theta;<sup>T</sup>
 
     * Finding related movies: if ||x<sup>(i)</sup>-x<sup>(j)</sup>|| is smaller &rarr; movie i and j are "similar"
 
     * Mean normalilzation: predict (&theta;<sup>(j)</sup>)<sup>T</sup>&sdot;x<sup>(i)</sup>+&mu;<sub>i</sub> = &mu;<sub>i</sub> for new user
+    
         <img src="http://latex.codecogs.com/svg.latex?Y=\begin{bmatrix}5&5&0&0&?\\5&?&?&0&?\\?&4&0&?&?\\0&0&5&4&?\end{bmatrix}"/> &rarr;  <img src="http://latex.codecogs.com/svg.latex?\mu=\begin{bmatrix}2.5\\2.5\\2\\2.25\end{bmatrix}"/> &rarr;  <img src="http://latex.codecogs.com/svg.latex?Y=\begin{bmatrix}2.5&2.5&-2.5&-2.5&?\\2.5&?&?&-2.5&?\\?&?&2&-2&?&?\\-2.25&-2.25&2.75&1.75&?\end{bmatrix}">
 
