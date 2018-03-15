@@ -150,7 +150,7 @@
 
     * Original model is just a special case of multivariate Gaussian distribution
 
-        <img src="http://latex.codecogs.com/svg.latex?\sum=\begin{matrix}\sigma_1^2&0&{\dots}&0\\0&\sigma_2^2&{\dots}&0\\\vdots&\vdots&\ddots&\vdots\\0&0&{\dots}&\sigma_n^2\end{bmatrix}"/>
+        <img src="http://latex.codecogs.com/svg.latex?\sum=\begin{bmatrix}\sigma_1^2&0&{\dots}&0\\0&\sigma_2^2&{\dots}&0\\\vdots&\vdots&\ddots&\vdots\\0&0&{\dots}&\sigma_n^2\end{bmatrix}"/>
 
     * Comparision
 
@@ -161,4 +161,93 @@
         Ok if m is small|Must have m > n, otherwise &sum; is non-invertible (may also be resulted from redundant features)
         
         Andrew's experience suggests when m > 10n, we could try Multivariate Gaussian
+
+4. Recommender System        
+
+    * Example: Predict Movie Rating, from 0 to 5 stars
+
+        Movie|Alice(1)|Bob(2)|Carol(3)|Dave(4)
+        -|-|-|-|-
+        1|5|5|0|0
+        2|5|?|?|?
+        3|?|4|0|4
+        4|0|0|5|?
+
+        n<sub>u</sub> = no. of users
+
+        n<sub>m</sub> = no. of movies
+
+        r(i, j) = 1 if user j has rated movie i
+
+        y<sup>(i, j)</sup> = rating given by user j to movie i (defined only if r(i, j) = 1)
+    
+    * Content Based Recommendations
+
+        Build feature vectors
+
+        For each user j, learn parameters &theta;<sup>(j)</sup> &isin; R<sup>n</sup> and predict user j's rating on movie i with (&theta;<sup>(j)</sup>)<sup>T</sup>&sdot;x<sup>(i)</sup> stars
+
+        * Problem formulation
+
+            To learn &theta;<sup>(j)</sup>
+
+            <img src="http://latex.codecogs.com/svg.latex?\min_{\theta^{(j)}}\frac{1}{2m^{(j)}}\sum_{i:r(i,j)=1}\big((\theta^{(j)})^T{\cdot}x^{(i)}-y^{(i,j)}\big)^2+\frac{\lambda}{2m^{(j)}}\sum_{k=1}^{n}(\theta^{(j)})^2"/>
+
+            Get rid of m<sup>(j)</sup> and learn all &theta;:
+
+            <img src="http://latex.codecogs.com/svg.latex?\min_{\theta^{(j)},\dots,\theta^{(n_u)}}\frac{1}{2}\sum_{j=1}^{n_u}\sum_{i:r(i,j)=1}\big((\theta^{(j)})^T{\cdot}x^{(i)}-y^{(i,j)}\big)^2+\frac{\lambda}{2}\sum_{j=1}^{n_u}\sum_{k=1}^{n}(\theta^{(j)})^2"/>
+
+            Gradient descent update:
+
+            For k &ne; 0:
+
+            <img src="http://latex.codecogs.com/svg.latex?\theta_k^{(j)}=\theta_k^{(j)}-\alpha\Big(\sum_{i:r(i,j)=1}\big((\theta^{(j)})^T{\cdot}x^{(i)}-y^{(i,j)}\big)x_k^{(i)}+\lambda\theta_k^{(j)}\Big)"/>
+            
+            For k = 0:
+            <img src="http://latex.codecogs.com/svg.latex?\theta_k^{(j)}=\theta_k^{(j)}-\alpha\Big(\sum_{i:r(i,j)=1}\big((\theta^{(j)})^T{\cdot}x^{(i)}-y^{(i,j)}\big)x_k^{(i)}\Big)"/>
+
+    * Collaborative Filtering
+
+        Given &x<sup>(1)</sup>, ..., &x<sup>(n<sub>m</sub>)</sup>, we can estimate &Theta<sup>(1)</sup>, ..., &Theta<sup>(n<sub>u</sub>)</sup>
+
+        Given &Theta<sup>(1)</sup>, ..., &Theta<sup>(n<sub>u</sub>)</sup>, we can estimate &x<sup>(1)</sup>, ..., &x<sup>(n<sub>m</sub>)</sup>
+
+        We can actually optimize both simutaneously and cost function is 
+        <img src="http://latex.codecogs.com/svg.latex?J(x^{(1)},\dots,x^{(n_m)},\theta^{(1)},\dots,\theta^{(n_u)})=\frac{1}{2}\sum_{i,j:r(i,j)=1}\big((\theta^{(j)})^T{\cdot}x^{(i)}-y^{(i,j)}\big)^2+\frac{\lambda}{2}\sum_{i=1}^{n_m}\sum_{k=1}^{n}(x_k^{(i)})^2+\frac{\lambda}{2}\sum_{j=1}^{n_u}\sum_{k=1}^{n}(\theta^{(j)})^2"/>
+
+    * Algorithm
+
+        Initialize &x<sup>(1)</sup>, ..., &x<sup>(n<sub>m</sub>)</sup> and &Theta<sup>(1)</sup>, ..., &Theta<sup>(n<sub>u</sub>)</sup> to small random values
+
+        Minimize J(...) using gradient descent (or other methods):
+
+        &nbsp;&nbsp;&nbsp;&nbsp;<img src="http://latex.codecogs.com/svg.latex?x_k^{(j)}=x_k^{(j)}-\alpha\Big(\sum_{j:r(i,j)=1}\big((\theta^{(j)})^T{\cdot}x^{(i)}-y^{(i,j)}\big)\theta_k^{(j)}+\lambdax_k^{(i)}\Big)"/>
+
+        &nbsp;&nbsp;&nbsp;&nbsp;<img src="http://latex.codecogs.com/svg.latex?\theta_k^{(j)}=\theta_k^{(j)}-\alpha\Big(\sum_{i:r(i,j)=1}\big((\theta^{(j)})^T{\cdot}x^{(i)}-y^{(i,j)}\big)x_k^{(i)}+\lambda\theta_k^{(j)}\Big)"/>
+
+        For a user with parameter &theta and a movie with feature x, pridict rating by &theta;<sup>T</sup>x
+
+    * Low Rank Matrix Factorization
+
+        Define:
+
+        <img src="http://latex.codecogs.com/svg.latex?X=\begin{bmatrix}-&(x^{(1)})^T&-\\-&(x^{(2)})^T&-\\\vdots&\vdots&\vdots\\-&(x^{(n_m)})^T&-\end{bmatrix},"/>
+        <img src="http://latex.codecogs.com/svg.latex?\Theta=\begin{bmatrix}-&(\theta^{(1)})^T&-\\-&(\theta^{(2)})^T&-\\\vdots&\vdots&\vdots\\-&(\theta^{(n_u)})^T&-\end{bmatrix}"/>
+
+        Predicted rating = X\Theta;<sup>T</sup> &rarr; [Low Rank Matrix](https://en.wikipedia.org/wiki/Low-rank_approximation)
+
+    * Finding related movies
+
+        How to find movie j related to movie i?
+
+        if ||x<sup>(i)</sup>-x<sup>(j)</sup>|| is smaller &rarr; movie i and j are "similar"
+
+    * Mean normalilzation
+
+        If we add a new user with no rating at all, then because of the regularization terms in our cost function, &theta; will be 0 for all features, which means \theta;<sup>T</sup>x is also 0, and all movies will assign 0 stars.
         
+        To avoid such scenario, we first calculate the means for each movie and subtract each rating with the mean and then use the algorithm to learn. e.g.
+    
+        <img src="http://latex.codecogs.com/svg.latex?Y=\begin{bmatrix}5&5&0&0&?\\5&?&?&0&?\\?&4&0&?&?\\0&0&5&4&?\end{bmatrix}"/> &rarr;  <img src="http://latex.codecogs.com/svg.latex?\mu=\begin{bmatrix}2.5\\2.5\\2\\2.25\end{bmatrix}"/> &rarr;  <img src="http://latex.codecogs.com/svg.latex?Y=\begin{bmatrix}2.5&2.5&-2.5&-2.5&?\\2.5&?&?&-2.5&?\\?&?&2&-2&?&?\\-2.25&-2.25&2.75&1.75&?\end{bmatrix}">
+
+        And for new user j, we will predict (&theta;<sup>(j)</sup>)<sup>T</sup>&sdot;x<sup>(i)</sup>+&mu;<sub>i</sub> = &mu;<sub>i</sub>
