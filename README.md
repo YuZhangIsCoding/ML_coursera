@@ -12,7 +12,8 @@ Topics covered in this course are:
    * [Week 6: Debugging, Bias/Variance, Precision/Recall](https://github.com/YuZhangIsCoding/ML_coursera/blob/master/Week6/)
    * [Week 7: Support Vector Machine and Kernels](https://github.com/YuZhangIsCoding/ML_coursera/blob/master/Week7/)
    * [Week 8: K-means Clustering and Principal Component Analysis](https://github.com/YuZhangIsCoding/ML_coursera/blob/master/Week8/)
-## [Week 1](https://github.com/YuZhangIsCoding/ML_coursera/blob/master/Week1/README.md)
+   * [Week 9: Anomaly Detection and Recommender System (Collaborative Filtering)](https://github.com/YuZhangIsCoding/ML_coursera/blob/master/Week9/)
+## [Week 1: Linear Regression with One Variable](https://github.com/YuZhangIsCoding/ML_coursera/blob/master/Week1/README.md)
 1. Introduction to Machine Learning
    * Popular ML algorithms
    * Supervised and unsupervised learning
@@ -32,7 +33,7 @@ Topics covered in this course are:
    * Matrix-vector, matrix-matrix multiplication
    * Transpose: B = A<sup>T</sup>, then B<sub>ij</sub> = A<sub>ji</sub>
       
-## [Week 2](https://github.com/YuZhangIsCoding/ML_coursera/blob/master/Week2/README.md)
+## [Week 2: Linear Regression with Multipule Variables](https://github.com/YuZhangIsCoding/ML_coursera/blob/master/Week2/README.md)
 1. Linear Regression with Multiple Variables
     * Often times we have multiple features (variables)
 h<sub>&theta;</sub>(x) = &theta;<sub>0</sub>+&theta;<sub>1</sub>x<sub>1</sub>+&theta;<sub>2</sub>x<sub>2</sub>+...
@@ -56,7 +57,7 @@ h<sub>&theta;</sub>(x) = &theta;<sub>0</sub>+&theta;<sub>1</sub>x<sub>1</sub>+&t
     * Wrap it all up, we can use this form for the matrix iterations: **&theta; = &theta;-<sup>&alpha;</sup>&frasl;<sub>m</sub>&sdot;X<sup>T</sup>&sdot;(X&sdot;&theta;-y)**
     * The cost function can also be vectorized: **J(&theta;) = <sup>1</sup>&frasl;<sub>2m</sub>&sdot;(X&sdot;&theta;-y)<sup>T</sup>&sdot;(X&sdot;&theta;-y)**
 
-## [Week 3](https://github.com/YuZhangIsCoding/ML_coursera/blob/master/Week3/README.md)
+## [Week 3: Logistic Regression](https://github.com/YuZhangIsCoding/ML_coursera/blob/master/Week3/README.md)
 
 1. Classification and Representation
     * Logistic regression: idea is to use threshold classifier output h<sub>&theta;</sub>(x) at 0.5
@@ -103,7 +104,7 @@ h<sub>&theta;</sub>(x) = &theta;<sub>0</sub>+&theta;<sub>1</sub>x<sub>1</sub>+&t
             
    * Regularized logistic regression:
       **J(&theta;) = -<sup>1</sup>&frasl;<sub>m</sub>&sdot;[&sum;(ylog(h<sub>&theta;</sub>(x))+(1-y)log(1-h<sub>&theta;</sub>(x)))]+<sup>&lambda;</sup>&frasl;<sub>2m</sub>&sdot;&sum;&theta;<sub>j</sub><sup>2</sup>, *j = 1, 2, ..., n***
-## [Week 4](https://github.com/YuZhangIsCoding/ML_coursera/blob/master/Week4/README.md)
+## [Week 4: Neural Networks (Forward propagation)](https://github.com/YuZhangIsCoding/ML_coursera/blob/master/Week4/README.md)
 1. Non-linear classification
     * Too many features in hypothesis, logistic regression suffers overfitting or large computational cost.
     * Computer vision: Car detection may result in millions of features if just include the quadratic features.
@@ -136,7 +137,7 @@ h<sub>&theta;</sub>(x) = &theta;<sub>0</sub>+&theta;<sub>1</sub>x<sub>1</sub>+&t
         * Multiple output units: one-vs-all
         * Instead of output as discrete values such as y &isin; {1, 2, 3, ...}, we have y &isin; [[1;0;0;0],[0;1;0;0],[0;0;1;0], ...]
 
-## [Week 5](https://github.com/YuZhangIsCoding/ML_coursera/blob/master/Week5/README.md)
+## [Week 5: Neural Networks (Backpropagation)](https://github.com/YuZhangIsCoding/ML_coursera/blob/master/Week5/README.md)
 1. Backpropagation
 
    * Cost function:
@@ -177,7 +178,7 @@ h<sub>&theta;</sub>(x) = &theta;<sub>0</sub>+&theta;<sub>1</sub>x<sub>1</sub>+&t
          4. Implement backpropagation to compute partial derivatives
          5. Use gradient checking to compare partial derivaties compute using backpropagation vs. using numerical estimate of gradients
          6. Use gradient descent or advanced optimized method with backpropation to try to minimize J(&Theta;) as a function of parameters &Theta; (Notice that J(&Theta;) is non-convex, so we may end up finding a local minimum)
-## [Week 6](https://github.com/YuZhangIsCoding/ML_coursera/blob/master/Week6/README.md)
+## [Week 6: Debugging, Bias/Variance, Precision/Recall](https://github.com/YuZhangIsCoding/ML_coursera/blob/master/Week6/README.md)
 1. Debugging a learning algorithm
     * If found unacceptable large errors in its prediction, try these:
         1. Get more training examples &rarr; fixes high variance
@@ -253,7 +254,7 @@ h<sub>&theta;</sub>(x) = &theta;<sub>0</sub>+&theta;<sub>1</sub>x<sub>1</sub>+&t
         
          1. Use a learning algorithm with many parameter (logisti/linear regression with many feature; neural network with many hidden layers), which gives low bias &rarr; J<sub>train</sub>(&theta;) will be small
          2. Use large training set, which makes it unlikely to overfit &rarr; J<sub>train</sub>(&theta;) &asymp; J<sub>test</sub>(&theta;)
-## [Week 7](https://github.com/YuZhangIsCoding/ML_coursera/blob/master/Week7/README.md)
+## [Week 7: Support Vector Machine and Kernels](https://github.com/YuZhangIsCoding/ML_coursera/blob/master/Week7/README.md)
 1. Support Vector Machine (Large Margin Classifier)
     * Alternative view of logistic regression
         We can build cost function as following:
@@ -356,7 +357,7 @@ h<sub>&theta;</sub>(x) = &theta;<sub>0</sub>+&theta;<sub>1</sub>x<sub>1</sub>+&t
 
         Neural Network likely to work well for most of these settings, but maybe slow to train.
    
-## [Week 8](https://github.com/YuZhangIsCoding/ML_coursera/blob/master/Week8/README.md)
+## [Week 8: K-means Clustering and Principal Component Analysis](https://github.com/YuZhangIsCoding/ML_coursera/blob/master/Week8/README.md)
 1. Clustering
     * Unsupervised learning
 
@@ -454,3 +455,108 @@ h<sub>&theta;</sub>(x) = &theta;<sub>0</sub>+&theta;<sub>1</sub>x<sub>1</sub>+&t
     * Application of PCA: *speed up supervised learning*, *reduce memory/disk needed to store data*, *visualization with K = 2 or 3*
         
     * Bad use of PCA: prevent overfitting, blindly use PCA without testing raw data
+## [Week 9: Anomaly Detection and Recommender System (Collaborative Filtering)](https://github.com/YuZhangIsCoding/ML_coursera/blob/master/Week9/README.md)
+1. Anomaly Detection
+    * Density estimation: p(x<sub>test</sub>) < &epsilon; &rarr; anomaly; p(x<sub>test</sub>) &ge; &epsilon; &rarr; OK
+
+        ![DensityEstimation](images/DenEsti.jpg)
+
+    * Gaussian Distribution: x ~ N(&mu;, &sigma;<sup>2</sup>)
+        
+        <img src="http://latex.codecogs.com/svg.latex?p(x;\mu,\sigma^2)=\frac{1}{\sqrt{2\pi}\sigma}\textrm{exp}\big(-\frac{(x-\mu)^2}{2\sigma^2}\big)"/>
+
+        ![GaussianExamples](images/GaussianExamples.png)
+
+        * Parameter estimation
+
+            <img src="http://latex.codecogs.com/svg.latex?\mu_j=\frac{1}{m}\sum_{i=1}^{m}x_j^{(i)},"/>
+
+            <img src="http://latex.codecogs.com/svg.latex?\sigma_j^2=\frac{1}{m}\sum_{i=1}^{m}(x_j^{(i)}-\mu_j)^2"/>
+        
+        * Anomaly detection algorithm: anomaly if p(x) < &epsilon;
+
+            <img src="http://latex.codecogs.com/svg.latex?p(x)=\prod_{j=1}^{n}p(x_j;\mu_j,\sigma_j^2)=\prod_{j=1}^{n}\frac{1}{\sqrt{2\pi}\sigma_j}\textrm{exp}\big(-\frac{(x_j-\mu_j)^2}{2\sigma_j^2}\big)"/>
+
+
+2. Building an anomaly detection system
+    * Algorithm evaluation: the cross validation test can also be used to choose parameter &epsilon;
+        * True positive, false positive, false negative and true negative
+        * Precision and recall
+        * F<sub>1</sub>-score
+
+    * Anomaly Detection VS. Supervised Learning
+
+        Anomaly Detection|Supervised Learning
+        -|-
+        Very small number of positive examples (0-20 is common) and large number of negative examples|Large number of positive and negative examples
+        Contains many different types of anomalies, which are hard for any algorithm to learn from positive examples|Enough positive examples to get a sense of what examples are like
+        Future anomalies may not look like any anomalies seen before|Future positive anomalies likely to be similar to ones in training set
+
+    * Features to use
+
+        * Non-Gaussian features: *log(x+c)*, *x<sup>c</sup>*, ...
+
+            ![NonGaussian](images/NonGaussian.png)
+
+        * Error analysis: **look at examples that are close to cutoff and create new features**
+
+            ![AnomalyAddFeature](images/AnomalyAddFeature.jpg)
+
+3. Multivariate Gaussian Distribution
+
+    ![MultivariateGaussian](images/MultivariateGaussian.png)
+        
+    * Parameters
+        
+        <img src="http://latex.codecogs.com/svg.latex?\mu_j=\frac{1}{m}\sum_{i=1}^{m}x_j^{(i)},"/>
+
+        <img src="http://latex.codecogs.com/svg.latex?\sum=\frac{1}{m}\sum_{i=1}^{m}(x^{(i)}-\mu)(x^{(i)}-\mu)^T=\frac{1}{m}{\cdot}X^T{\cdot}X"/>
+
+        <img src="http://latex.codecogs.com/svg.latex?p(x;\mu,\sum)=\frac{1}{(2\pi)^{\frac{n}{2}}|\sum|^{\frac{1}{2}}}\textrm{exp}\big(-\frac{1}{2}(x-\mu)^T{\sum}^{-1}(x-\mu)\big)"/>
+
+        ![MultiGaussian_Sigma](images/MultiGaussian_Simga.png)
+
+    * Original model is just a special case of multivariate Gaussian distribution
+
+        <img src="http://latex.codecogs.com/svg.latex?\sum=\begin{bmatrix}\sigma_1^2&0&{\dots}&0\\0&\sigma_2^2&{\dots}&0\\\vdots&\vdots&\ddots&\vdots\\0&0&{\dots}&\sigma_n^2\end{bmatrix}"/>
+
+    * Comparision: Andrew's experience suggests when m > 10n, we could try Multivariate Gaussian
+
+        Original Model|Multivariate Gaussian
+        -|-
+        Manually create features to capture anomalies when features take unusual combinations|Automatically captures correlations between features
+        Computationally cheaper, n can go large (10,000 to 100,000)|Computationally more expensive because of the calculation of the reverse of &sum;
+        Ok if m is small|Must have m > n, otherwise &sum; is non-invertible (may also be resulted from redundant features)
+        
+4. Recommender System (Predict Movie Rating)      
+    * Content Based Recommendations
+
+        <img src="http://latex.codecogs.com/svg.latex?\min_{\theta^{(j)},\dots,\theta^{(n_u)}}\frac{1}{2}\sum_{j=1}^{n_u}\sum_{i:r(i,j)=1}\big((\theta^{(j)})^T{\cdot}x^{(i)}-y^{(i,j)}\big)^2+\frac{\lambda}{2}\sum_{j=1}^{n_u}\sum_{k=1}^{n}(\theta^{(j)})^2"/>
+
+        Gradient descent update: (for k = 0, &lambda; = 0)
+
+        <img src="http://latex.codecogs.com/svg.latex?\theta_k^{(j)}=\theta_k^{(j)}-\alpha\Big(\sum_{i:r(i,j)=1}\big((\theta^{(j)})^T{\cdot}x^{(i)}-y^{(i,j)}\big)x_k^{(i)}+\lambda\theta_k^{(j)}\Big)"/>
+            
+    * Collaborative Filtering
+
+        <img src="http://latex.codecogs.com/svg.latex?J(x^{(1)},\dots,x^{(n_m)},\theta^{(1)},\dots,\theta^{(n_u)})=\frac{1}{2}\sum_{i,j:r(i,j)=1}\big((\theta^{(j)})^T{\cdot}x^{(i)}-y^{(i,j)}\big)^2+\frac{\lambda}{2}\sum_{i=1}^{n_m}\sum_{k=1}^{n}(x_k^{(i)})^2+\frac{\lambda}{2}\sum_{j=1}^{n_u}\sum_{k=1}^{n}(\theta^{(j)})^2"/>
+
+    * Algorithm
+
+        Initialize &x<sup>(1)</sup>, ..., &x<sup>(n<sub>m</sub>)</sup> and &Theta<sup>(1)</sup>, ..., &Theta<sup>(n<sub>u</sub>)</sup> to small random values
+
+        Minimize J(...) using gradient descent (or other methods):
+
+        &nbsp;&nbsp;&nbsp;&nbsp;<img src="http://latex.codecogs.com/svg.latex?x_k^{(j)}=x_k^{(j)}-\alpha\Big(\sum_{j:r(i,j)=1}\big((\theta^{(j)})^T{\cdot}x^{(i)}-y^{(i,j)}\big)\theta_k^{(j)}+\lambdax_k^{(i)}\Big)"/>
+
+        &nbsp;&nbsp;&nbsp;&nbsp;<img src="http://latex.codecogs.com/svg.latex?\theta_k^{(j)}=\theta_k^{(j)}-\alpha\Big(\sum_{i:r(i,j)=1}\big((\theta^{(j)})^T{\cdot}x^{(i)}-y^{(i,j)}\big)x_k^{(i)}+\lambda\theta_k^{(j)}\Big)"/>
+
+        For a user with parameter &theta and a movie with feature x, pridict rating by &theta;<sup>T</sup>x
+
+    * [Low Rank Matrix Factorization](https://en.wikipedia.org/wiki/Low-rank_approximation): Predicted rating = X\Theta;<sup>T</sup>
+
+    * Finding related movies: if ||x<sup>(i)</sup>-x<sup>(j)</sup>|| is smaller &rarr; movie i and j are "similar"
+
+    * Mean normalilzation: predict (&theta;<sup>(j)</sup>)<sup>T</sup>&sdot;x<sup>(i)</sup>+&mu;<sub>i</sub> = &mu;<sub>i</sub> for new user
+        <img src="http://latex.codecogs.com/svg.latex?Y=\begin{bmatrix}5&5&0&0&?\\5&?&?&0&?\\?&4&0&?&?\\0&0&5&4&?\end{bmatrix}"/> &rarr;  <img src="http://latex.codecogs.com/svg.latex?\mu=\begin{bmatrix}2.5\\2.5\\2\\2.25\end{bmatrix}"/> &rarr;  <img src="http://latex.codecogs.com/svg.latex?Y=\begin{bmatrix}2.5&2.5&-2.5&-2.5&?\\2.5&?&?&-2.5&?\\?&?&2&-2&?&?\\-2.25&-2.25&2.75&1.75&?\end{bmatrix}">
+
