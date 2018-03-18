@@ -13,6 +13,7 @@ Topics covered in this course are:
    * [Week 7: Support Vector Machine and Kernels](https://github.com/YuZhangIsCoding/ML_coursera/blob/master/Week7/)
    * [Week 8: K-means Clustering and Principal Component Analysis](https://github.com/YuZhangIsCoding/ML_coursera/blob/master/Week8/)
    * [Week 9: Anomaly Detection and Recommender System (Collaborative Filtering)](https://github.com/YuZhangIsCoding/ML_coursera/blob/master/Week9/)
+   * [Week 10: Stochastic Gradient Descent, Online Learning and Map Reduce](https://github.com/YuZhangIsCoding/ML_coursera/blob/master/Week10/)
 ## [Week 1: Linear Regression with One Variable](https://github.com/YuZhangIsCoding/ML_coursera/blob/master/Week1/README.md)
 1. Introduction to Machine Learning
    * Popular ML algorithms
@@ -561,7 +562,7 @@ h<sub>&theta;</sub>(x) = &theta;<sub>0</sub>+&theta;<sub>1</sub>x<sub>1</sub>+&t
     
         <img src="http://latex.codecogs.com/svg.latex?Y=\begin{bmatrix}5&5&0&0&?\\5&?&?&0&?\\?&4&0&?&?\\0&0&5&4&?\end{bmatrix}"/> &rarr;  <img src="http://latex.codecogs.com/svg.latex?\mu=\begin{bmatrix}2.5\\2.5\\2\\2.25\end{bmatrix}"/> &rarr;  <img src="http://latex.codecogs.com/svg.latex?Y=\begin{bmatrix}2.5&2.5&-2.5&-2.5&?\\2.5&?&?&-2.5&?\\?&?&2&-2&?&?\\-2.25&-2.25&2.75&1.75&?\end{bmatrix}">
 
-## [Week 10](https://github.com/YuZhangIsCoding/ML_coursera/blob/master/Week10/README.md)
+## [Week 10: Stochastic Gradient Descent, Online Learning and Map Reduce](https://github.com/YuZhangIsCoding/ML_coursera/blob/master/Week10/README.md)
 
 1. Learning With Large Datasets
 
@@ -574,7 +575,7 @@ h<sub>&theta;</sub>(x) = &theta;<sub>0</sub>+&theta;<sub>1</sub>x<sub>1</sub>+&t
 
     * Stochastic Gradient Descent
 
-        Take linear regression as an example, <img src="http://latex.codecogs.com/svg.latex?Cost(\theta,(x^{(i)},y^{(i)}))=\frac{1}{2}(h_{\theta}(x^{(i)})-y^{(i)})^2"/>
+        <img src="http://latex.codecogs.com/svg.latex?Cost(\theta,(x^{(i)},y^{(i)}))=\frac{1}{2}(h_{\theta}(x^{(i)})-y^{(i)})^2"/>
 
         &nbsp;&nbsp;&nbsp;&nbsp;<img src="http://latex.codecogs.com/svg.latex?J_{train}(\theta)=\frac{1}{m}\sum_{i=1}^{m}Cost(y,(x^{(i)},y^{(i)}))"/>
 
