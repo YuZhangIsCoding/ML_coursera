@@ -1,4 +1,4 @@
-## Week 18
+## Week 11
 
 1. Photo Optical Character Recognition(OCR)
     1. Text detection

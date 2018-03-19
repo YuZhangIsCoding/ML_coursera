@@ -2,7 +2,17 @@
 
 Today(Feb 20, 2018), I started a classic Coursera course [Machine Learning by Andrew Ng](https://www.coursera.org/learn/machine-learning/home/welcome). I will update weekly about the topics introduced in the lectures and interesting problems I encountered. Here, I will just include a few bullet points from each week. Detailed summaries can be found in each week's README.md file. All diagrams were created from [draw.io](https://www.draw.io/), and all math notations were typed using inline html code or generated from [CodeCogs](http://latex.codecogs.com/).
 
-Topics covered in this course are:
+Main topics coved in this course are:
+    * Supervised Learning
+        * Linear Regression, Logistic Regression, Neural Retworks, Support Vector Machines(SVMs)
+    * Unsupervised Learning
+        * K-means, PCA, Anomaly Detection
+    * Special Applications/Topics
+        * Recommender System, Large Scale Machine Learning
+    * Advice On Building a Machine Learning System
+        * Bias/Variance, Regularization, Evaluation of Learning Algorithm, Learning Curve, Error Analysis, Ceiling Analysis
+
+Topics for each week are:
 
    * [Week 1: Linear Regression with One Variable](https://github.com/YuZhangIsCoding/ML_coursera/blob/master/Week1/)
    * [Week 2: Linear Regression with Multipule Variables](https://github.com/YuZhangIsCoding/ML_coursera/blob/master/Week2/)
@@ -14,6 +24,8 @@ Topics covered in this course are:
    * [Week 8: K-means Clustering and Principal Component Analysis](https://github.com/YuZhangIsCoding/ML_coursera/blob/master/Week8/)
    * [Week 9: Anomaly Detection and Recommender System (Collaborative Filtering)](https://github.com/YuZhangIsCoding/ML_coursera/blob/master/Week9/)
    * [Week 10: Stochastic Gradient Descent, Online Learning and Map Reduce](https://github.com/YuZhangIsCoding/ML_coursera/blob/master/Week10/)
+   * [Week 11: Photo Opitical Character Recognition and Ceiling Analysis](https://github.com/YuZhangIsCoding/ML_coursera/blob/master/Week11/)
+
 ## [Week 1: Linear Regression with One Variable](https://github.com/YuZhangIsCoding/ML_coursera/blob/master/Week1/README.md)
 1. Introduction to Machine Learning
    * Popular ML algorithms
@@ -634,3 +646,47 @@ h<sub>&theta;</sub>(x) = &theta;<sub>0</sub>+&theta;<sub>1</sub>x<sub>1</sub>+&t
 1. Map Reduce and Data Parallelism
     
     Use multiple machines or a multi-core machine to split the training set and use a node to combine results.
+
+## [Week 11: Photo Opitical Character Recognition and Ceiling Analysis](https://github.com/YuZhangIsCoding/ML_coursera/blob/master/Week11/README.md)
+
+1. Photo Optical Character Recognition(OCR)
+    1. Text detection
+    2. Character segmentation
+    3. Character classification
+    
+    * Pipeline
+
+        ![OCR_pipeline](images/OCR_pipeline.jpg)
+
+    * Sliding window: supervised learning
+
+        * Use 2D sliding window for text detection
+
+        * Use 1D sliding window for character segmentation
+
+    * Getting lots of data: artifact data
+
+        1. Create data from scratch
+
+        2. Synthesis data by introducing distortioins
+            
+            * Distortion introduced should be representative of the type of noise/distortion in the test set
+            * Adding random/meaningless noise usually does not help
+
+    * Advice for getting lots of data
+
+        1. Make sure have a low bias classifier before expanding the effort (draw learning curve, keep increasing the number of features/number of hidden units until you have a low bias classifier)
+
+        2. "How much work would it be to get 10&times; as much data as we currently have"
+
+            * Artificial data synthesis
+            * Collect/label it yourself
+            * "Crowd source" ([Amazon Mechanical Turk](https://www.mturk.com/))
+
+    * Ceiling Analysis: estimate the errors due to each component
+
+        "What part of the pipeline should you spend the most time trying to improve"
+
+## Ending Remarks
+
+After about one month learning, today(03-19-2018), I finally finished this course. This course serves as a good introduction to machine learning, and thanks to Coursera and Andrew Ng, I've now known more basics about machine learning. 
